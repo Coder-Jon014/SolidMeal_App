@@ -5,6 +5,9 @@ SolidMeal is a mobile application designed to assist individuals with specific h
 Beta Version of the app is available here: 
 https://drive.google.com/file/d/1oWGP55d48OtEwLvjeTUMqkmsRa9RaUgv/view?usp=share_link
 
+Website here:
+https://solidmeal.vercel.app/
+
 ### IMPORTANT:
 
 ```

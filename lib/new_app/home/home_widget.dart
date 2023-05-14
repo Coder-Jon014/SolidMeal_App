@@ -44,6 +44,8 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<List<UserNutrientContentRecord>>(
       stream: queryUserNutrientContentRecord(
         parent: currentUserReference,
@@ -79,7 +81,7 @@ class _HomeWidgetState extends State<HomeWidget> {
             key: scaffoldKey,
             backgroundColor: Color(0xFFF1F4F8),
             appBar: AppBar(
-              backgroundColor: Colors.black,
+              backgroundColor: FlutterFlowTheme.of(context).primary,
               automaticallyImplyLeading: false,
               title: AuthUserStreamWidget(
                 builder: (context) => Text(
@@ -137,7 +139,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                         width: double.infinity,
                         height: 70.0,
                         decoration: BoxDecoration(
-                          color: Color(0xFF040404),
+                          color: Colors.white,
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 5.0,
@@ -254,7 +256,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             maxSugar: homeUserNutrientContentRecord!.maxSugar,
                             maxSodium: homeUserNutrientContentRecord!.maxSodium,
                             query: _model.queryVariable,
-                            number: 5,
+                            number: 1,
                             intolerances: functions.stringListJoiner(
                                 homeUserNutrientContentRecord!.intolerances!
                                     .toList()),
@@ -298,20 +300,27 @@ class _HomeWidgetState extends State<HomeWidget> {
 
                             // Apply your custom function to the recipes
                             recipes = functions.knnAlgorithmIntegrator(
-                              homeUserNutrientContentRecord!.maxCarbs ?? 100,
-                              homeUserNutrientContentRecord!.maxProtein ?? 100,
-                              homeUserNutrientContentRecord!.maxCalories ?? 2000,
-                              homeUserNutrientContentRecord!.maxFat ?? 100,
-                              homeUserNutrientContentRecord!.maxCalcium ?? 100,
-                              homeUserNutrientContentRecord!.maxCholesterol ?? 100,
-                              homeUserNutrientContentRecord!.maxSaturatedFat ?? 100,
-                              homeUserNutrientContentRecord!.maxPotassium ?? 100,
-                              homeUserNutrientContentRecord!.maxSugar ?? 100,
-                              homeUserNutrientContentRecord!.maxSodium ?? 100,
-                              homeUserNutrientContentRecord!.maxFiber ?? 100,
-                              homeUserNutrientContentRecord!.maxMagnesium ?? 100,
-                              recipes
-                            );
+                                homeUserNutrientContentRecord!.maxCarbs ?? 100,
+                                homeUserNutrientContentRecord!.maxProtein ??
+                                    100,
+                                homeUserNutrientContentRecord!.maxCalories ??
+                                    2000,
+                                homeUserNutrientContentRecord!.maxFat ?? 100,
+                                homeUserNutrientContentRecord!.maxCalcium ??
+                                    100,
+                                homeUserNutrientContentRecord!.maxCholesterol ??
+                                    100,
+                                homeUserNutrientContentRecord!
+                                        .maxSaturatedFat ??
+                                    100,
+                                homeUserNutrientContentRecord!.maxPotassium ??
+                                    100,
+                                homeUserNutrientContentRecord!.maxSugar ?? 100,
+                                homeUserNutrientContentRecord!.maxSodium ?? 100,
+                                homeUserNutrientContentRecord!.maxFiber ?? 100,
+                                homeUserNutrientContentRecord!.maxMagnesium ??
+                                    100,
+                                recipes);
 
                             // Convert the list of recipes back to JSON
                             Map<String, dynamic> newRecipesJson = {
@@ -565,7 +574,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
-                                  'MoreMealTypes',
+                                  'MainCourse',
                                   queryParams: {
                                     'type': serializeParam(
                                       'main course',
@@ -573,10 +582,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     ),
                                     'title': serializeParam(
                                       'Main Course',
-                                      ParamType.String,
-                                    ),
-                                    'query': serializeParam(
-                                      'chicken',
                                       ParamType.String,
                                     ),
                                   }.withoutNulls,
@@ -669,7 +674,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
-                                  'MoreMealTypes',
+                                  'Breakfast',
                                   queryParams: {
                                     'type': serializeParam(
                                       'breakfast',
@@ -677,10 +682,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     ),
                                     'title': serializeParam(
                                       'Breakfast',
-                                      ParamType.String,
-                                    ),
-                                    'query': serializeParam(
-                                      'and',
                                       ParamType.String,
                                     ),
                                   }.withoutNulls,
@@ -773,7 +774,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
-                                  'MoreMealTypes',
+                                  'Dessert',
                                   queryParams: {
                                     'type': serializeParam(
                                       'dessert',
@@ -781,10 +782,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     ),
                                     'title': serializeParam(
                                       'Dessert',
-                                      ParamType.String,
-                                    ),
-                                    'query': serializeParam(
-                                      'cake',
                                       ParamType.String,
                                     ),
                                   }.withoutNulls,
@@ -877,18 +874,14 @@ class _HomeWidgetState extends State<HomeWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
-                                  'MoreMealTypes',
+                                  'Beverages',
                                   queryParams: {
                                     'type': serializeParam(
-                                      'beverage',
+                                      'drink',
                                       ParamType.String,
                                     ),
                                     'title': serializeParam(
                                       'Beverage',
-                                      ParamType.String,
-                                    ),
-                                    'query': serializeParam(
-                                      'drink',
                                       ParamType.String,
                                     ),
                                   }.withoutNulls,
@@ -981,7 +974,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
-                                  'MoreMealTypes',
+                                  'Salad',
                                   queryParams: {
                                     'type': serializeParam(
                                       'salad',
@@ -989,10 +982,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     ),
                                     'title': serializeParam(
                                       'Salad',
-                                      ParamType.String,
-                                    ),
-                                    'query': serializeParam(
-                                      'tomato',
                                       ParamType.String,
                                     ),
                                   }.withoutNulls,
@@ -1119,8 +1108,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 homeUserNutrientContentRecord!.maxSaturatedFat,
                             maxSugar: homeUserNutrientContentRecord!.maxSugar,
                             maxSodium: homeUserNutrientContentRecord!.maxSodium,
-                            query: 'and',
-                            number: 10,
+                            query: _model.queryVariable,
+                            number: 5,
                             intolerances: functions.stringListJoiner(
                                 homeUserNutrientContentRecord!.intolerances!
                                     .toList()),
@@ -1139,6 +1128,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 homeUserNutrientContentRecord!.maxCalories,
                             maxMagnesium:
                                 homeUserNutrientContentRecord!.maxMagnesium,
+                            sort: 'random',
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
@@ -1164,20 +1154,27 @@ class _HomeWidgetState extends State<HomeWidget> {
 
                             // Apply your custom function to the recipes
                             recipes = functions.knnAlgorithmIntegrator(
-                              homeUserNutrientContentRecord!.maxCarbs ?? 100,
-                              homeUserNutrientContentRecord!.maxProtein ?? 100,
-                              homeUserNutrientContentRecord!.maxCalories ?? 2000,
-                              homeUserNutrientContentRecord!.maxFat ?? 100,
-                              homeUserNutrientContentRecord!.maxCalcium ?? 100,
-                              homeUserNutrientContentRecord!.maxCholesterol ?? 100,
-                              homeUserNutrientContentRecord!.maxSaturatedFat ?? 100,
-                              homeUserNutrientContentRecord!.maxPotassium ?? 100,
-                              homeUserNutrientContentRecord!.maxSugar ?? 100,
-                              homeUserNutrientContentRecord!.maxSodium ?? 100,
-                              homeUserNutrientContentRecord!.maxFiber ?? 100,
-                              homeUserNutrientContentRecord!.maxMagnesium ?? 100,
-                              recipes
-                            );
+                                homeUserNutrientContentRecord!.maxCarbs ?? 100,
+                                homeUserNutrientContentRecord!.maxProtein ??
+                                    100,
+                                homeUserNutrientContentRecord!.maxCalories ??
+                                    2000,
+                                homeUserNutrientContentRecord!.maxFat ?? 100,
+                                homeUserNutrientContentRecord!.maxCalcium ??
+                                    100,
+                                homeUserNutrientContentRecord!.maxCholesterol ??
+                                    100,
+                                homeUserNutrientContentRecord!
+                                        .maxSaturatedFat ??
+                                    100,
+                                homeUserNutrientContentRecord!.maxPotassium ??
+                                    100,
+                                homeUserNutrientContentRecord!.maxSugar ?? 100,
+                                homeUserNutrientContentRecord!.maxSodium ?? 100,
+                                homeUserNutrientContentRecord!.maxFiber ?? 100,
+                                homeUserNutrientContentRecord!.maxMagnesium ??
+                                    100,
+                                recipes);
 
                             // Convert the list of recipes back to JSON
                             Map<String, dynamic> newRecipesJson = {

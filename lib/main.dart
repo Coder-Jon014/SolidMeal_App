@@ -1,3 +1,4 @@
+import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,13 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initFirebase();
 
-  runApp(MyApp());
+  final appState = FFAppState(); // Initialize FFAppState
+  await appState.initializePersistedState();
+
+  runApp(ChangeNotifierProvider(
+    create: (context) => appState,
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -129,8 +136,8 @@ class _NavBarPageState extends State<NavBarPage> {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
         }),
-        backgroundColor: Colors.black,
-        selectedItemColor: FlutterFlowTheme.of(context).primary,
+        backgroundColor: FlutterFlowTheme.of(context).primary,
+        selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
         showSelectedLabels: true,
         showUnselectedLabels: false,
@@ -138,7 +145,7 @@ class _NavBarPageState extends State<NavBarPage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
+              Icons.home_rounded,
               size: 24.0,
             ),
             label: 'Home',

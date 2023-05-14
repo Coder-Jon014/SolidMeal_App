@@ -5,8 +5,7 @@ export '/new_app/create_account/create_account_widget.dart'
 export '/new_app/get_to_know1/get_to_know1_widget.dart' show GetToKnow1Widget;
 export '/new_app/login/login_widget.dart' show LoginWidget;
 export '/home_copy/home_copy_widget.dart' show HomeCopyWidget;
-export '/new_app/more_meal_types/more_meal_types_widget.dart'
-    show MoreMealTypesWidget;
+export '/new_app/main_course/main_course_widget.dart' show MainCourseWidget;
 export '/new_app/onboarding1/onboarding1_widget.dart' show Onboarding1Widget;
 export '/new_app/onboarding2/onboarding2_widget.dart' show Onboarding2Widget;
 export '/new_app/profile_page/profile_page_widget.dart' show ProfilePageWidget;
@@ -29,3 +28,7 @@ export '/recipe_nutrient_content_page/recipe_nutrient_content_page_widget.dart'
 export '/edit_profile/edit_profile_widget.dart' show EditProfileWidget;
 export '/edit_nutrient_content_page/edit_nutrient_content_page_widget.dart'
     show EditNutrientContentPageWidget;
+export '/new_app/breakfast/breakfast_widget.dart' show BreakfastWidget;
+export '/new_app/beverages/beverages_widget.dart' show BeveragesWidget;
+export '/new_app/salad/salad_widget.dart' show SaladWidget;
+export '/new_app/dessert/dessert_widget.dart' show DessertWidget;

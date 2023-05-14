@@ -81,6 +81,8 @@ class _GetToKnow2WidgetState extends State<GetToKnow2Widget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<UsersRecord>(
       stream: UsersRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {
@@ -260,7 +262,7 @@ class _GetToKnow2WidgetState extends State<GetToKnow2Widget>
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 5.0),
                                                 child: Text(
-                                                  'Do you follow a specific diet?\nChoose your diet from the list below\nYou can scroll for more options',
+                                                  'Do you follow a specific diet?\nChoose your diet from the list below\nYou can scroll for more options\nIf you do not follow any diet click Next.',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelLarge,

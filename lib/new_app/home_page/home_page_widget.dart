@@ -37,6 +37,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: Scaffold(
@@ -47,10 +49,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Container(
-                width: 400.0,
+                width: double.infinity,
                 height: 900.0,
                 child: custom_widgets.KnnRecipeComparison(
-                  width: 400.0,
+                  width: double.infinity,
                   height: 900.0,
                   targetSodium: 114.0,
                   targetSugar: 9.0,

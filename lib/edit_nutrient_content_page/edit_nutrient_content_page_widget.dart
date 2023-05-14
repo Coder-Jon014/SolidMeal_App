@@ -11,7 +11,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import 'edit_nutrient_content_page_model.dart';
 export 'edit_nutrient_content_page_model.dart';
 
@@ -46,23 +45,25 @@ class _EditNutrientContentPageWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.black,
+          backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
-            borderRadius: 30,
-            borderWidth: 1,
-            buttonSize: 60,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 30,
+              size: 30.0,
             ),
             onPressed: () async {
               context.pop();
@@ -73,14 +74,14 @@ class _EditNutrientContentPageWidgetState
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                   color: Colors.white,
-                  fontSize: 22,
+                  fontSize: 22.0,
                   useGoogleFonts: GoogleFonts.asMap().containsKey(
                       FlutterFlowTheme.of(context).headlineMediumFamily),
                 ),
           ),
           actions: [],
           centerTitle: false,
-          elevation: 2,
+          elevation: 2.0,
         ),
         body: SafeArea(
           child: StreamBuilder<List<UserNutrientContentRecord>>(
@@ -93,11 +94,11 @@ class _EditNutrientContentPageWidgetState
               if (!snapshot.hasData) {
                 return Center(
                   child: SizedBox(
-                    width: 150,
-                    height: 150,
+                    width: 150.0,
+                    height: 150.0,
                     child: SpinKitPulse(
                       color: Color(0xFF4B39EF),
-                      size: 150,
+                      size: 150.0,
                     ),
                   ),
                 );
@@ -118,11 +119,13 @@ class _EditNutrientContentPageWidgetState
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                       child: Container(
                         decoration: BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              15.0, 0.0, 15.0, 0.0),
                           child: Text(
                             'Here is your list of Nutrients. \nCustomize them the way you want and hit the tick.\nIf you would like to reset the changes please hit the reset button',
                             textAlign: TextAlign.center,
@@ -141,7 +144,8 @@ class _EditNutrientContentPageWidgetState
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                       child: StreamBuilder<List<IllnessesRecord>>(
                         stream: queryIllnessesRecord(),
                         builder: (context, snapshot) {
@@ -149,11 +153,11 @@ class _EditNutrientContentPageWidgetState
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 150,
-                                height: 150,
+                                width: 150.0,
+                                height: 150.0,
                                 child: SpinKitPulse(
                                   color: Color(0xFF4B39EF),
-                                  size: 150,
+                                  size: 150.0,
                                 ),
                               ),
                             );
@@ -304,12 +308,12 @@ class _EditNutrientContentPageWidgetState
                               },
                               text: 'Reset',
                               options: FFButtonOptions(
-                                width: 130,
-                                height: 40,
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                                iconPadding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                                width: 130.0,
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
@@ -324,9 +328,9 @@ class _EditNutrientContentPageWidgetState
                                     ),
                                 borderSide: BorderSide(
                                   color: Colors.transparent,
-                                  width: 1,
+                                  width: 1.0,
                                 ),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                             ),
                           );
@@ -334,7 +338,8 @@ class _EditNutrientContentPageWidgetState
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -348,11 +353,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -371,17 +376,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -411,7 +416,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController1 ??=
@@ -437,40 +442,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -479,7 +485,7 @@ class _EditNutrientContentPageWidgetState
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: Color(0xFF909090),
+                                                  color: Colors.black,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -503,7 +509,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -523,7 +529,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -543,11 +549,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -566,17 +572,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -606,7 +612,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController2 ??=
@@ -632,40 +638,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -674,7 +681,7 @@ class _EditNutrientContentPageWidgetState
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: Color(0xFF909090),
+                                                  color: Colors.black,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -698,7 +705,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -718,7 +725,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -738,11 +745,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -761,17 +768,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -801,7 +808,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController3 ??=
@@ -827,40 +834,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -869,7 +877,7 @@ class _EditNutrientContentPageWidgetState
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: Color(0xFF909090),
+                                                  color: Colors.black,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -893,7 +901,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -913,7 +921,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -933,11 +941,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -956,17 +964,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -996,7 +1004,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController4 ??=
@@ -1022,40 +1030,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1064,7 +1073,7 @@ class _EditNutrientContentPageWidgetState
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: Color(0xFF909090),
+                                                  color: Colors.black,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -1088,7 +1097,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -1108,7 +1117,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -1128,11 +1137,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1151,17 +1160,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1191,7 +1200,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController5 ??=
@@ -1217,40 +1226,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1259,7 +1269,7 @@ class _EditNutrientContentPageWidgetState
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: Color(0xFF909090),
+                                                  color: Colors.black,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -1283,7 +1293,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -1303,7 +1313,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -1323,11 +1333,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1346,17 +1356,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1386,7 +1396,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController6 ??=
@@ -1412,40 +1422,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1454,7 +1465,7 @@ class _EditNutrientContentPageWidgetState
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: Color(0xFF909090),
+                                                  color: Colors.black,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -1478,7 +1489,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -1498,7 +1509,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -1518,11 +1529,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1541,17 +1552,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1581,7 +1592,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController7 ??=
@@ -1607,40 +1618,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1649,7 +1661,7 @@ class _EditNutrientContentPageWidgetState
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: Color(0xFF909090),
+                                                  color: Colors.black,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -1673,7 +1685,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -1693,7 +1705,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -1713,11 +1725,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1736,17 +1748,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1776,7 +1788,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController8 ??=
@@ -1802,40 +1814,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1844,7 +1857,7 @@ class _EditNutrientContentPageWidgetState
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: Color(0xFF909090),
+                                                  color: Colors.black,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -1868,7 +1881,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -1888,7 +1901,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -1908,11 +1921,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1931,17 +1944,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1971,7 +1984,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController9 ??=
@@ -1997,40 +2010,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -2039,7 +2053,7 @@ class _EditNutrientContentPageWidgetState
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: Color(0xFF909090),
+                                                  color: Colors.black,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -2063,7 +2077,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -2083,7 +2097,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -2103,11 +2117,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -2126,17 +2140,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -2166,7 +2180,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController10 ??=
@@ -2192,40 +2206,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -2234,7 +2249,7 @@ class _EditNutrientContentPageWidgetState
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: Color(0xFF909090),
+                                                  color: Colors.black,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -2258,7 +2273,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -2278,7 +2293,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -2298,11 +2313,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -2321,17 +2336,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -2361,7 +2376,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController11 ??=
@@ -2387,40 +2402,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -2429,7 +2445,7 @@ class _EditNutrientContentPageWidgetState
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: Color(0xFF909090),
+                                                  color: Colors.black,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -2453,7 +2469,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -2473,7 +2489,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -2493,11 +2509,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -2516,17 +2532,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -2556,7 +2572,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController12 ??=
@@ -2582,40 +2598,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -2624,7 +2641,7 @@ class _EditNutrientContentPageWidgetState
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: Color(0xFF909090),
+                                                  color: Colors.black,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -2648,7 +2665,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -2668,7 +2685,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -2688,11 +2705,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -2711,17 +2728,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -2751,7 +2768,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController13 ??=
@@ -2777,40 +2794,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -2819,7 +2837,7 @@ class _EditNutrientContentPageWidgetState
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: Color(0xFF909090),
+                                                  color: Colors.black,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -2843,7 +2861,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -2863,7 +2881,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -2883,11 +2901,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -2906,17 +2924,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -2946,7 +2964,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController14 ??=
@@ -2972,40 +2990,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
@@ -3024,7 +3043,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -3044,7 +3063,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -3064,11 +3083,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -3087,17 +3106,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -3127,7 +3146,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController15 ??=
@@ -3153,40 +3172,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
@@ -3205,7 +3225,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -3225,7 +3245,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -3245,11 +3265,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -3268,17 +3288,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -3308,7 +3328,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController16 ??=
@@ -3334,40 +3354,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
@@ -3386,7 +3407,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -3406,7 +3427,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -3426,11 +3447,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -3449,17 +3470,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -3489,7 +3510,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController17 ??=
@@ -3515,40 +3536,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
@@ -3567,7 +3589,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -3587,7 +3609,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -3607,11 +3629,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -3630,17 +3652,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -3670,7 +3692,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController18 ??=
@@ -3696,40 +3718,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
@@ -3748,7 +3771,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -3768,7 +3791,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -3788,11 +3811,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -3811,17 +3834,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -3851,7 +3874,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController19 ??=
@@ -3877,40 +3900,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
@@ -3929,7 +3953,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -3949,7 +3973,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -3969,11 +3993,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -3992,17 +4016,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -4032,7 +4056,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController20 ??=
@@ -4058,40 +4082,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
@@ -4110,7 +4135,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -4130,7 +4155,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -4150,11 +4175,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -4173,17 +4198,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -4213,7 +4238,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController21 ??=
@@ -4239,40 +4264,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
@@ -4291,7 +4317,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -4311,7 +4337,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -4331,11 +4357,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -4354,17 +4380,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -4394,7 +4420,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController22 ??=
@@ -4420,40 +4446,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
@@ -4472,7 +4499,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -4492,7 +4519,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -4512,11 +4539,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -4535,17 +4562,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -4575,7 +4602,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController23 ??=
@@ -4601,40 +4628,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
@@ -4653,7 +4681,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -4673,7 +4701,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -4693,11 +4721,11 @@ class _EditNutrientContentPageWidgetState
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -4716,17 +4744,17 @@ class _EditNutrientContentPageWidgetState
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -4756,7 +4784,7 @@ class _EditNutrientContentPageWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 8),
+                                                  0.0, 8.0, 0.0, 8.0),
                                           child: TextFormField(
                                             controller:
                                                 _model.textController24 ??=
@@ -4782,40 +4810,41 @@ class _EditNutrientContentPageWidgetState
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0xFF909090),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 2,
+                                                  width: 2.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               filled: true,
                                               contentPadding:
                                                   EdgeInsetsDirectional
-                                                      .fromSTEB(15, 15, 15, 15),
+                                                      .fromSTEB(15.0, 15.0,
+                                                          15.0, 15.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
@@ -4834,7 +4863,7 @@ class _EditNutrientContentPageWidgetState
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                            5.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -4854,7 +4883,7 @@ class _EditNutrientContentPageWidgetState
                                           child: Icon(
                                             Icons.check_outlined,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),

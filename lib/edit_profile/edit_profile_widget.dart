@@ -45,6 +45,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFFF1F4F8),
@@ -110,17 +112,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Stack(
-                              children: [],
-                            ),
-                          ),
-                        ],
-                      ),
                       Align(
                         alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
@@ -462,7 +453,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF14aa9b),
+                            color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .bodySmall
                                 .override(

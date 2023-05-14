@@ -47,6 +47,8 @@ class _RecipeNutrientContentPageWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return FutureBuilder<ApiCallResponse>(
       future: RecipeInfoCall.call(
         ids: widget.id,

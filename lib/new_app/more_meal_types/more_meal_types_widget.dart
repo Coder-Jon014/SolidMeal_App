@@ -12,7 +12,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import 'more_meal_types_model.dart';
 export 'more_meal_types_model.dart';
 
@@ -76,11 +75,11 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
           if (!snapshot.hasData) {
             return Center(
               child: SizedBox(
-                width: 150,
-                height: 150,
+                width: 150.0,
+                height: 150.0,
                 child: SpinKitPulse(
                   color: Color(0xFF4B39EF),
-                  size: 150,
+                  size: 150.0,
                 ),
               ),
             );
@@ -99,19 +98,19 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
             onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
             child: Scaffold(
               key: scaffoldKey,
-              backgroundColor: Color(0xFFF1F4F8),
+              backgroundColor: Colors.white,
               appBar: AppBar(
                 backgroundColor: Colors.black,
                 automaticallyImplyLeading: false,
                 leading: FlutterFlowIconButton(
                   borderColor: Colors.transparent,
-                  borderRadius: 30,
-                  borderWidth: 1,
-                  buttonSize: 60,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 60.0,
                   icon: Icon(
                     Icons.arrow_back_rounded,
                     color: Colors.white,
-                    size: 30,
+                    size: 30.0,
                   ),
                   onPressed: () async {
                     context.pop();
@@ -122,7 +121,7 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily: 'Outfit',
                         color: Colors.white,
-                        fontSize: 28,
+                        fontSize: 28.0,
                         fontWeight: FontWeight.normal,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
                             FlutterFlowTheme.of(context).headlineMediumFamily),
@@ -130,7 +129,7 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                 ),
                 actions: [],
                 centerTitle: false,
-                elevation: 2,
+                elevation: 2.0,
               ),
               body: StreamBuilder<List<UserNutrientContentRecord>>(
                 stream: queryUserNutrientContentRecord(
@@ -142,11 +141,11 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                   if (!snapshot.hasData) {
                     return Center(
                       child: SizedBox(
-                        width: 150,
-                        height: 150,
+                        width: 150.0,
+                        height: 150.0,
                         child: SpinKitPulse(
                           color: Color(0xFF4B39EF),
-                          size: 150,
+                          size: 150.0,
                         ),
                       ),
                     );
@@ -167,8 +166,8 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 12.0, 16.0, 0.0),
                           child: TextFormField(
                             controller: _model.textController,
                             onChanged: (_) => EasyDebounce.debounce(
@@ -190,7 +189,7 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                                   .override(
                                     fontFamily: 'Outfit',
                                     color: Color(0xFF57636C),
-                                    fontSize: 12,
+                                    fontSize: 12.0,
                                     fontWeight: FontWeight.normal,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
@@ -199,31 +198,31 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 1,
+                                  color: Color(0xFFDADADA),
+                                  width: 1.0,
                                 ),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(12.0),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 1,
+                                  width: 1.0,
                                 ),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(12.0),
                               ),
                               errorBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 1,
+                                  width: 1.0,
                                 ),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(12.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 1,
+                                  width: 1.0,
                                 ),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(12.0),
                               ),
                               filled: true,
                               fillColor: Colors.white,
@@ -237,7 +236,7 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF14181B),
-                                  fontSize: 12,
+                                  fontSize: 12.0,
                                   fontWeight: FontWeight.normal,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
@@ -253,7 +252,8 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 12),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 12.0, 0.0, 12.0),
                           child: FutureBuilder<ApiCallResponse>(
                             future: RecipesCall.call(
                               maxSaturatedFat: columnUserNutrientContentRecord!
@@ -262,7 +262,7 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                                   columnUserNutrientContentRecord!.maxSugar,
                               maxSodium:
                                   columnUserNutrientContentRecord!.maxSodium,
-                              query: _model.queryVariable3,
+                              query: 'and',
                               number: 20,
                               intolerances: functions.stringListJoiner(
                                   columnUserNutrientContentRecord!.intolerances!
@@ -292,11 +292,11 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -317,16 +317,15 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                                       100,
                                   columnUserNutrientContentRecord!.maxCalories ??
                                       2000,
-                                  columnUserNutrientContentRecord!.maxFat ??
-                                      100,
+                                  columnUserNutrientContentRecord!.maxFat ?? 100,
                                   columnUserNutrientContentRecord!.maxCalcium ??
                                       100,
                                   columnUserNutrientContentRecord!.maxCholesterol ??
                                       100,
-                                  columnUserNutrientContentRecord!.maxSaturatedFat ??
-                                      100,
                                   columnUserNutrientContentRecord!
-                                          .maxPotassium ??
+                                          .maxSaturatedFat ??
+                                      100,
+                                  columnUserNutrientContentRecord!.maxPotassium ??
                                       100,
                                   columnUserNutrientContentRecord!.maxSugar ??
                                       100,
@@ -334,8 +333,7 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                                       100,
                                   columnUserNutrientContentRecord!.maxFiber ??
                                       100,
-                                  columnUserNutrientContentRecord!
-                                          .maxMagnesium ??
+                                  columnUserNutrientContentRecord!.maxMagnesium ??
                                       100,
                                   recipes);
 
@@ -349,8 +347,8 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                                   final recipes = newRecipesJson['results']
                                       as List<dynamic>;
                                   return Wrap(
-                                    spacing: 8,
-                                    runSpacing: 8,
+                                    spacing: 8.0,
+                                    runSpacing: 8.0,
                                     alignment: WrapAlignment.start,
                                     crossAxisAlignment:
                                         WrapCrossAlignment.start,
@@ -385,23 +383,23 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                                                   .size
                                                   .width *
                                               0.45,
-                                          height: 190,
+                                          height: 190.0,
                                           decoration: BoxDecoration(
                                             color: Colors.white,
                                             boxShadow: [
                                               BoxShadow(
-                                                blurRadius: 4,
+                                                blurRadius: 4.0,
                                                 color: Color(0x230E151B),
-                                                offset: Offset(0, 2),
+                                                offset: Offset(0.0, 2.0),
                                               )
                                             ],
                                             borderRadius:
-                                                BorderRadius.circular(12),
+                                                BorderRadius.circular(12.0),
                                           ),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    4, 4, 4, 4),
+                                                    4.0, 4.0, 4.0, 4.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -411,14 +409,15 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                                               children: [
                                                 ClipRRect(
                                                   borderRadius:
-                                                      BorderRadius.circular(10),
+                                                      BorderRadius.circular(
+                                                          10.0),
                                                   child: Image.network(
                                                     getJsonField(
                                                       recipesItem,
                                                       r'''$.image''',
                                                     ),
                                                     width: double.infinity,
-                                                    height: 115,
+                                                    height: 115.0,
                                                     fit: BoxFit.cover,
                                                   ),
                                                 ),
@@ -426,8 +425,8 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                8, 12, 0, 0),
+                                                            .fromSTEB(8.0, 12.0,
+                                                                0.0, 0.0),
                                                     child: Text(
                                                       getJsonField(
                                                         recipesItem,
@@ -442,48 +441,15 @@ class _MoreMealTypesWidgetState extends State<MoreMealTypesWidget> {
                                                                     'Outfit',
                                                                 color: Color(
                                                                     0xFF14181B),
-                                                                fontSize: 11,
+                                                                fontSize: 14.0,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .normal,
+                                                                        .w500,
                                                                 useGoogleFonts: GoogleFonts
                                                                         .asMap()
                                                                     .containsKey(
                                                                         FlutterFlowTheme.of(context)
                                                                             .titleMediumFamily),
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                8, 4, 0, 0),
-                                                    child: Text(
-                                                      '${getJsonField(
-                                                        recipesItem,
-                                                        r'''$.nutrition.nutrients[0].amount''',
-                                                      ).toString()} kCal',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodySmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                color: Color(
-                                                                    0xFF57636C),
-                                                                fontSize: 12,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodySmallFamily),
                                                               ),
                                                     ),
                                                   ),

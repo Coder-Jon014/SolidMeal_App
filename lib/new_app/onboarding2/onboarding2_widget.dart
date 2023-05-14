@@ -181,6 +181,8 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: Scaffold(
@@ -413,12 +415,12 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFFFFCC33),
+                            color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
                                   fontFamily: 'Plus Jakarta Sans',
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontSize: 18.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()

@@ -15,7 +15,6 @@ class RecipesCall {
     int? number = 100,
     double? maxSugar = 1000,
     double? maxSodium = 1000,
-    String? diet = 'Vegetarian',
     String? intolerances = 'tree nut',
     double? maxProtein = 1000,
     double? maxCarbs = 2000,
@@ -34,7 +33,6 @@ class RecipesCall {
     double? maxMagnesium = 1000,
     String? type = 'main course',
     double? maxCalories = 2000,
-    String? cuisine = 'European',
     double? minProtein = 15,
     int? offset = 1,
     String? sort = 'popularity',
@@ -262,6 +260,10 @@ class RecipeInfoCall {
   static dynamic url(dynamic response) => getJsonField(
         response,
         r'''$[:].sourceUrl''',
+      );
+  static dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$[:].id''',
       );
 }
 

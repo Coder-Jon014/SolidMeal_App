@@ -104,12 +104,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => HomeCopyWidget(),
         ),
         FFRoute(
-          name: 'MoreMealTypes',
-          path: '/moreMealTypes',
-          builder: (context, params) => MoreMealTypesWidget(
+          name: 'MainCourse',
+          path: '/mainCourse',
+          builder: (context, params) => MainCourseWidget(
             type: params.getParam('type', ParamType.String),
             title: params.getParam('title', ParamType.String),
-            query: params.getParam('query', ParamType.String),
           ),
         ),
         FFRoute(
@@ -203,6 +202,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'EditNutrientContentPage',
           path: '/editNutrientContentPage',
           builder: (context, params) => EditNutrientContentPageWidget(),
+        ),
+        FFRoute(
+          name: 'Breakfast',
+          path: '/breakfast',
+          builder: (context, params) => BreakfastWidget(
+            type: params.getParam('type', ParamType.String),
+            title: params.getParam('title', ParamType.String),
+          ),
+        ),
+        FFRoute(
+          name: 'Beverages',
+          path: '/beverages',
+          builder: (context, params) => BeveragesWidget(
+            type: params.getParam('type', ParamType.String),
+            title: params.getParam('title', ParamType.String),
+          ),
+        ),
+        FFRoute(
+          name: 'Salad',
+          path: '/salad',
+          builder: (context, params) => SaladWidget(
+            type: params.getParam('type', ParamType.String),
+            title: params.getParam('title', ParamType.String),
+          ),
+        ),
+        FFRoute(
+          name: 'Dessert',
+          path: '/dessert',
+          builder: (context, params) => DessertWidget(
+            type: params.getParam('type', ParamType.String),
+            title: params.getParam('title', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,

@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import 'nutrient_content_page_model.dart';
 export 'nutrient_content_page_model.dart';
 
@@ -42,23 +41,25 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: Colors.black,
+          backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
-            borderRadius: 30,
-            borderWidth: 1,
-            buttonSize: 60,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 30,
+              size: 30.0,
             ),
             onPressed: () async {
               context.pop();
@@ -69,14 +70,14 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                   color: Colors.white,
-                  fontSize: 22,
+                  fontSize: 22.0,
                   useGoogleFonts: GoogleFonts.asMap().containsKey(
                       FlutterFlowTheme.of(context).headlineMediumFamily),
                 ),
           ),
           actions: [],
           centerTitle: false,
-          elevation: 2,
+          elevation: 2.0,
         ),
         body: SafeArea(
           child: StreamBuilder<List<UserNutrientContentRecord>>(
@@ -89,11 +90,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
               if (!snapshot.hasData) {
                 return Center(
                   child: SizedBox(
-                    width: 150,
-                    height: 150,
+                    width: 150.0,
+                    height: 150.0,
                     child: SpinKitPulse(
                       color: Color(0xFF4B39EF),
-                      size: 150,
+                      size: 150.0,
                     ),
                   ),
                 );
@@ -111,42 +112,42 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
               return SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(12, 15, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(12.0, 15.0, 0.0, 0.0),
                       child: Container(
                         decoration: BoxDecoration(),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
-                          child: Text(
-                            'Here is your Nutrient Content \nCustomize them by hitting the customize button \n We advise you to consult a nutritionist before making any changes to your diet',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  fontWeight: FontWeight.w500,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
-                                ),
-                          ),
+                        child: Text(
+                          'Here is your Nutrient Content \nCustomize them by hitting the customize button',
+                          textAlign: TextAlign.center,
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
+                                fontWeight: FontWeight.w500,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily),
+                              ),
                         ),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 5.0),
                             child: Container(
-                              height: 33,
+                              height: 33.0,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(0),
+                                borderRadius: BorderRadius.circular(0.0),
                               ),
                               child: FFButtonWidget(
                                 onPressed: () async {
@@ -154,12 +155,12 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                 },
                                 text: 'Customize',
                                 options: FFButtonOptions(
-                                  width: 130,
-                                  height: 26,
+                                  width: 130.0,
+                                  height: 26.0,
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 0),
+                                      0.0, 0.0, 0.0, 0.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 0),
+                                      0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
@@ -174,9 +175,9 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                       ),
                                   borderSide: BorderSide(
                                     color: Colors.transparent,
-                                    width: 1,
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(15),
+                                  borderRadius: BorderRadius.circular(15.0),
                                 ),
                               ),
                             ),
@@ -191,11 +192,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -214,17 +215,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -271,11 +272,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -294,17 +295,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -351,11 +352,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -374,17 +375,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -431,11 +432,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -454,17 +455,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -511,11 +512,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -534,17 +535,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -591,11 +592,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -614,17 +615,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -671,11 +672,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -694,17 +695,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -751,11 +752,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -774,17 +775,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -831,11 +832,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -854,17 +855,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -911,11 +912,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -934,17 +935,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -991,11 +992,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1014,17 +1015,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1071,11 +1072,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1094,17 +1095,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1151,11 +1152,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1174,17 +1175,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1231,11 +1232,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1254,17 +1255,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1311,11 +1312,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1334,17 +1335,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1391,11 +1392,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1414,17 +1415,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1471,11 +1472,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1494,17 +1495,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1551,11 +1552,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1574,17 +1575,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1631,11 +1632,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1654,17 +1655,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1711,11 +1712,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1734,17 +1735,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1791,11 +1792,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1814,17 +1815,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1871,11 +1872,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1894,17 +1895,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -1951,11 +1952,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -1974,17 +1975,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -2031,11 +2032,11 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 150,
-                                    height: 150,
+                                    width: 150.0,
+                                    height: 150.0,
                                     child: SpinKitPulse(
                                       color: Color(0xFF4B39EF),
-                                      size: 150,
+                                      size: 150.0,
                                     ),
                                   ),
                                 );
@@ -2054,17 +2055,17 @@ class _NutrientContentPageWidgetState extends State<NutrientContentPageWidget> {
                                           .first
                                       : null;
                               return Container(
-                                height: 53,
+                                height: 53.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   border: Border.all(
                                     color: Colors.white,
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 0, 15, 0),
+                                      15.0, 0.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:

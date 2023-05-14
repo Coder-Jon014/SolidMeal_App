@@ -81,6 +81,8 @@ class _GetToKnow1WidgetState extends State<GetToKnow1Widget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<UsersRecord>(
       stream: UsersRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {
@@ -261,6 +263,7 @@ class _GetToKnow1WidgetState extends State<GetToKnow1Widget>
                                                         0.0, 0.0, 0.0, 5.0),
                                                 child: Text(
                                                   'What illnesses do you have?\n (select one that apply then Next,\n if none click Next)',
+                                                  textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelLarge,

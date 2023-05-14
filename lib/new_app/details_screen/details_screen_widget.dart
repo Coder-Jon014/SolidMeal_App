@@ -50,6 +50,8 @@ class _DetailsScreenWidgetState extends State<DetailsScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return FutureBuilder<ApiCallResponse>(
       future: RecipeInfoCall.call(
         ids: widget.recipeId,
@@ -572,7 +574,7 @@ class _DetailsScreenWidgetState extends State<DetailsScreenWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Plus Jakarta Sans',
-                                        fontSize: 12.0,
+                                        fontSize: 16.0,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
@@ -581,59 +583,35 @@ class _DetailsScreenWidgetState extends State<DetailsScreenWidget> {
                                   indicatorColor:
                                       FlutterFlowTheme.of(context).primary,
                                   tabs: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  1.0, 1.0, 1.0, 1.0),
-                                          child: Icon(
-                                            Icons.fastfood_sharp,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        Tab(
-                                          text: 'Ingredients',
-                                        ),
-                                      ],
+                                    Tab(
+                                      text: 'Ingredients',
+                                      icon: Icon(
+                                        Icons.fastfood_sharp,
+                                        color: Colors.black,
+                                      ),
+                                      iconMargin:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              1.0, 1.0, 1.0, 1.0),
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  1.0, 1.0, 1.0, 1.0),
-                                          child: FaIcon(
-                                            FontAwesomeIcons.bookOpen,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        Tab(
-                                          text: 'Instructions',
-                                        ),
-                                      ],
+                                    Tab(
+                                      text: 'Instructions',
+                                      icon: FaIcon(
+                                        FontAwesomeIcons.bookOpen,
+                                        color: Colors.black,
+                                      ),
+                                      iconMargin:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              1.0, 1.0, 1.0, 1.0),
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  1.0, 1.0, 1.0, 1.0),
-                                          child: Icon(
-                                            Icons.favorite,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        Tab(
-                                          text: 'Health',
-                                        ),
-                                      ],
+                                    Tab(
+                                      text: 'Health',
+                                      icon: Icon(
+                                        Icons.favorite,
+                                        color: Colors.black,
+                                      ),
+                                      iconMargin:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              1.0, 1.0, 1.0, 1.0),
                                     ),
                                   ],
                                 ),
@@ -719,6 +697,8 @@ class _DetailsScreenWidgetState extends State<DetailsScreenWidget> {
                                                                     fontFamily:
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily,
+                                                                    fontSize:
+                                                                        16.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
@@ -747,7 +727,15 @@ class _DetailsScreenWidgetState extends State<DetailsScreenWidget> {
                                                                           .end,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyMedium,
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        fontSize:
+                                                                            16.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      ),
                                                                 ),
                                                               ),
                                                             ),
@@ -834,6 +822,8 @@ class _DetailsScreenWidgetState extends State<DetailsScreenWidget> {
                                                                       fontFamily:
                                                                           FlutterFlowTheme.of(context)
                                                                               .bodyMediumFamily,
+                                                                      fontSize:
+                                                                          16.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w500,
@@ -884,6 +874,9 @@ class _DetailsScreenWidgetState extends State<DetailsScreenWidget> {
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
                                                       children: [
                                                         Align(
                                                           alignment:
@@ -1022,11 +1015,12 @@ class _DetailsScreenWidgetState extends State<DetailsScreenWidget> {
                                                             .secondaryBackground,
                                                         boxShadow: [
                                                           BoxShadow(
-                                                            blurRadius: 3.0,
+                                                            blurRadius: 12.0,
                                                             color: Color(
                                                                 0x33000000),
                                                             offset: Offset(
                                                                 0.0, 1.0),
+                                                            spreadRadius: 5.0,
                                                           )
                                                         ],
                                                         borderRadius:

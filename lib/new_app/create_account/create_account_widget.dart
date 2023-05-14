@@ -90,6 +90,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: Scaffold(
@@ -140,7 +142,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 16.0, 16.0, 16.0),
+                            20.0, 20.0, 20.0, 20.0),
                         child: Material(
                           color: Colors.transparent,
                           elevation: 10.0,
@@ -774,7 +776,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                   userNutrientContentCreateData);
 
                                           context.pushNamedAuth(
-                                              'GetToKnow1', mounted);
+                                              'Onboarding2', mounted);
                                         },
                                         text: 'Create Account',
                                         options: FFButtonOptions(
@@ -888,7 +890,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                   userNutrientContentCreateData);
 
                                           context.pushNamedAuth(
-                                              'GetToKnow1', mounted);
+                                              'Onboarding2', mounted);
                                         },
                                         text: 'Continue with Google',
                                         icon: FaIcon(

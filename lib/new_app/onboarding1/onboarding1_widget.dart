@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'onboarding1_model.dart';
 export 'onboarding1_model.dart';
@@ -45,17 +44,19 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFFFCC33),
+        backgroundColor: FlutterFlowTheme.of(context).primary,
         body: SafeArea(
           child: Container(
-            width: 394.0,
+            width: double.infinity,
             height: 849.0,
             decoration: BoxDecoration(
-              color: Color(0xFFFFCC33),
+              color: FlutterFlowTheme.of(context).primary,
             ),
             alignment: AlignmentDirectional(0.0, 0.0),
             child: Column(
@@ -78,35 +79,17 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 12.0, 0.0),
                           child: Container(
-                            width: 377.0,
-                            height: 353.0,
+                            width: 255.0,
+                            height: 310.0,
                             decoration: BoxDecoration(
-                              color: Color(0xFFFFCC33),
+                              color: FlutterFlowTheme.of(context).primary,
                             ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 20.0, 20.0, 20.0),
-                              child: Lottie.network(
-                                'https://assets6.lottiefiles.com/packages/lf20_qycjgckh.json',
-                                width: 35.0,
-                                height: 151.0,
-                                fit: BoxFit.cover,
-                                animate: true,
-                              ),
+                            child: Image.asset(
+                              'assets/images/logo.png',
+                              width: 65.0,
+                              height: 66.0,
+                              fit: BoxFit.contain,
                             ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.13),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              60.0, 60.0, 60.0, 60.0),
-                          child: Image.asset(
-                            'assets/images/solidMeal.png',
-                            width: 400.0,
-                            height: 80.0,
-                            fit: BoxFit.fitWidth,
                           ),
                         ),
                       ),

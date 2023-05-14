@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'onboarding3_model.dart';
 export 'onboarding3_model.dart';
@@ -45,66 +44,56 @@ class _Onboarding3WidgetState extends State<Onboarding3Widget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFFFCC33),
+        backgroundColor: Colors.white,
         body: SafeArea(
           child: Container(
-            width: 394.0,
+            width: double.infinity,
             height: 849.0,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: FlutterFlowTheme.of(context).primary,
             ),
             alignment: AlignmentDirectional(0.0, 0.0),
-            child: Stack(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Align(
-                  alignment: AlignmentDirectional(-0.06, -0.38),
-                  child: Container(
-                    width: 377.0,
-                    height: 353.0,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                    ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          20.0, 20.0, 20.0, 20.0),
-                      child: Lottie.network(
-                        'https://assets5.lottiefiles.com/packages/lf20_6efbhc0k.json',
-                        width: 35.0,
-                        height: 151.0,
-                        fit: BoxFit.cover,
-                        animate: true,
-                      ),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(0.0, 0.72),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(60.0, 60.0, 60.0, 60.0),
-                    child: Image.asset(
-                      'assets/images/solidMeal.png',
-                      width: 400.0,
-                      height: 80.0,
-                      fit: BoxFit.fitWidth,
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(-0.03, 0.09),
-                  child: Text(
-                    'Cooking up something for you......',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Source Sans Pro',
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed('Home');
+                  },
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(-0.06, -0.38),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              12.0, 0.0, 12.0, 0.0),
+                          child: Container(
+                            width: 255.0,
+                            height: 310.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).primary,
+                            ),
+                            child: Image.asset(
+                              'assets/images/logo.png',
+                              width: 65.0,
+                              height: 66.0,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
                         ),
+                      ),
+                    ],
                   ),
                 ),
               ],

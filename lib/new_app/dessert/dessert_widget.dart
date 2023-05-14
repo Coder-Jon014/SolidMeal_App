@@ -7,29 +7,29 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'more_cuisines_model.dart';
-export 'more_cuisines_model.dart';
+import 'dessert_model.dart';
+export 'dessert_model.dart';
 
-class MoreCuisinesWidget extends StatefulWidget {
-  const MoreCuisinesWidget({
+class DessertWidget extends StatefulWidget {
+  const DessertWidget({
     Key? key,
-    required this.cuisine,
-    required this.query,
+    required this.type,
+    required this.title,
   }) : super(key: key);
 
-  final String? cuisine;
-  final String? query;
+  final String? type;
+  final String? title;
 
   @override
-  _MoreCuisinesWidgetState createState() => _MoreCuisinesWidgetState();
+  _DessertWidgetState createState() => _DessertWidgetState();
 }
 
-class _MoreCuisinesWidgetState extends State<MoreCuisinesWidget> {
-  late MoreCuisinesModel _model;
+class _DessertWidgetState extends State<DessertWidget> {
+  late DessertModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -37,17 +37,13 @@ class _MoreCuisinesWidgetState extends State<MoreCuisinesWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => MoreCuisinesModel());
+    _model = createModel(context, () => DessertModel());
 
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.queryVariable2 = widget.query;
-      });
-    });
-
-    _model.textController ??=
-        TextEditingController(text: _model.queryVariable2);
+    _model.textController ??= TextEditingController(
+        text: valueOrDefault<String>(
+      FFAppState().queryDessert,
+      'cake',
+    ));
   }
 
   @override
@@ -83,23 +79,21 @@ class _MoreCuisinesWidgetState extends State<MoreCuisinesWidget> {
               ),
             );
           }
-          List<IllnessesRecord> moreCuisinesIllnessesRecordList =
-              snapshot.data!;
+          List<IllnessesRecord> dessertIllnessesRecordList = snapshot.data!;
           // Return an empty Container when the item does not exist.
           if (snapshot.data!.isEmpty) {
             return Container();
           }
-          final moreCuisinesIllnessesRecord =
-              moreCuisinesIllnessesRecordList.isNotEmpty
-                  ? moreCuisinesIllnessesRecordList.first
-                  : null;
+          final dessertIllnessesRecord = dessertIllnessesRecordList.isNotEmpty
+              ? dessertIllnessesRecordList.first
+              : null;
           return GestureDetector(
             onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
             child: Scaffold(
               key: scaffoldKey,
-              backgroundColor: Color(0xFFF1F4F8),
+              backgroundColor: Colors.white,
               appBar: AppBar(
-                backgroundColor: Colors.black,
+                backgroundColor: FlutterFlowTheme.of(context).primary,
                 automaticallyImplyLeading: false,
                 leading: FlutterFlowIconButton(
                   borderColor: Colors.transparent,
@@ -116,7 +110,7 @@ class _MoreCuisinesWidgetState extends State<MoreCuisinesWidget> {
                   },
                 ),
                 title: Text(
-                  '${widget.cuisine} Options',
+                  '${widget.title} Options',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily: 'Outfit',
                         color: Colors.white,
@@ -164,133 +158,133 @@ class _MoreCuisinesWidgetState extends State<MoreCuisinesWidget> {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          width: double.infinity,
-                          height: 71.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 12.0, 16.0, 12.0),
-                                  child: TextFormField(
-                                    controller: _model.textController,
-                                    onChanged: (_) => EasyDebounce.debounce(
-                                      '_model.textController',
-                                      Duration(milliseconds: 2000),
-                                      () async {
-                                        setState(() {
-                                          _model.queryVariable2 = widget.query;
-                                        });
-                                      },
-                                    ),
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      labelText: 'Search recipes...',
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .bodySmall
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            color: Color(0xFF57636C),
-                                            fontSize: 12.0,
-                                            fontWeight: FontWeight.normal,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmallFamily),
-                                          ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      filled: true,
-                                      fillColor: Color(0xFFECECEC),
-                                      prefixIcon: Icon(
-                                        Icons.search_rounded,
-                                        color: Color(0xFF57636C),
-                                      ),
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Outfit',
-                                          color: Color(0xFF14181B),
-                                          fontSize: 12.0,
-                                          fontWeight: FontWeight.normal,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
-                                        ),
-                                    maxLines: null,
-                                    validator: _model.textControllerValidator
-                                        .asValidator(context),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 12.0, 16.0, 0.0),
+                          child: TextFormField(
+                            controller: _model.textController,
+                            onChanged: (_) => EasyDebounce.debounce(
+                              '_model.textController',
+                              Duration(milliseconds: 1000),
+                              () async {
+                                setState(() {
+                                  FFAppState().queryDessert =
+                                      valueOrDefault<String>(
+                                    _model.textController.text,
+                                    'cake',
+                                  );
+                                });
+                              },
+                            ),
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              isDense: true,
+                              labelText: 'Search products...',
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.normal,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodySmallFamily),
                                   ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFDADADA),
+                                  width: 1.0,
                                 ),
+                                borderRadius: BorderRadius.circular(12.0),
                               ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              filled: true,
+                              fillColor: Colors.white,
+                              prefixIcon: Icon(
+                                Icons.search_rounded,
+                                color: Color(0xFF57636C),
+                              ),
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color: Color(0xFF14181B),
+                                  fontSize: 12.0,
+                                  fontWeight: FontWeight.normal,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
+                                ),
+                            maxLines: null,
+                            validator: _model.textControllerValidator
+                                .asValidator(context),
+                            inputFormatters: [
+                              FilteringTextInputFormatter.allow(
+                                  RegExp('[a-zA-Z]'))
                             ],
                           ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 12.0, 0.0, 44.0),
+                              0.0, 12.0, 0.0, 12.0),
                           child: FutureBuilder<ApiCallResponse>(
                             future: RecipesCall.call(
-                              maxSaturatedFat: moreCuisinesIllnessesRecord!
-                                  .targetSaturatedFat
-                                  ?.toDouble(),
-                              maxSugar: moreCuisinesIllnessesRecord!.targetSugar
-                                  ?.toDouble(),
-                              maxSodium: moreCuisinesIllnessesRecord!
-                                  .targetSodium
-                                  ?.toDouble(),
+                              maxSaturatedFat: columnUserNutrientContentRecord!
+                                  .maxSaturatedFat,
+                              maxSugar:
+                                  columnUserNutrientContentRecord!.maxSugar,
+                              maxSodium:
+                                  columnUserNutrientContentRecord!.maxSodium,
+                              query: valueOrDefault<String>(
+                                FFAppState().queryDessert,
+                                'cake',
+                              ),
+                              number: 20,
                               intolerances: functions.stringListJoiner(
                                   columnUserNutrientContentRecord!.intolerances!
                                       .toList()),
-                              maxProtein:
-                                  columnUserNutrientContentRecord!.maxProtein,
-                              maxCalcium:
-                                  columnUserNutrientContentRecord!.maxCalcium,
                               maxPotassium:
                                   columnUserNutrientContentRecord!.maxPotassium,
+                              maxCarbs:
+                                  columnUserNutrientContentRecord!.maxCarbs,
+                              maxProtein:
+                                  columnUserNutrientContentRecord!.maxProtein,
+                              maxFat: columnUserNutrientContentRecord!.maxFat,
+                              maxCalcium:
+                                  columnUserNutrientContentRecord!.maxCalcium,
+                              maxCholesterol: columnUserNutrientContentRecord!
+                                  .maxCholesterol,
                               maxFiber:
                                   columnUserNutrientContentRecord!.maxFiber,
+                              maxCalories:
+                                  columnUserNutrientContentRecord!.maxCalories,
                               maxMagnesium:
                                   columnUserNutrientContentRecord!.maxMagnesium,
-                              query: _model.queryVariable2,
+                              offset: 5,
+                              type: widget.type,
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
@@ -307,12 +301,50 @@ class _MoreCuisinesWidgetState extends State<MoreCuisinesWidget> {
                                 );
                               }
                               final wrapRecipesResponse = snapshot.data!;
+                              final recipesJson = wrapRecipesResponse
+                                  .jsonBody; // get the JSON body of the response
+                              // Convert the JSON to a list of maps (recipes)
+                              List<Map<String, dynamic>> recipes =
+                                  List<Map<String, dynamic>>.from(
+                                      recipesJson["results"]);
+
+                              // Apply your custom function to the recipes
+                              recipes = functions.knnAlgorithmIntegrator(
+                                  columnUserNutrientContentRecord!.maxCarbs ??
+                                      100,
+                                  columnUserNutrientContentRecord!.maxProtein ??
+                                      100,
+                                  columnUserNutrientContentRecord!.maxCalories ??
+                                      2000,
+                                  columnUserNutrientContentRecord!.maxFat ?? 100,
+                                  columnUserNutrientContentRecord!.maxCalcium ??
+                                      100,
+                                  columnUserNutrientContentRecord!.maxCholesterol ??
+                                      100,
+                                  columnUserNutrientContentRecord!
+                                          .maxSaturatedFat ??
+                                      100,
+                                  columnUserNutrientContentRecord!.maxPotassium ??
+                                      100,
+                                  columnUserNutrientContentRecord!.maxSugar ??
+                                      100,
+                                  columnUserNutrientContentRecord!.maxSodium ??
+                                      100,
+                                  columnUserNutrientContentRecord!.maxFiber ??
+                                      100,
+                                  columnUserNutrientContentRecord!.maxMagnesium ??
+                                      100,
+                                  recipes);
+
+                              // Convert the list of recipes back to JSON
+                              Map<String, dynamic> newRecipesJson = {
+                                "results": recipes
+                              };
+
                               return Builder(
                                 builder: (context) {
-                                  final recipes = RecipesCall.recipes(
-                                        wrapRecipesResponse.jsonBody,
-                                      )?.toList() ??
-                                      [];
+                                  final recipes = newRecipesJson['results']
+                                      as List<dynamic>;
                                   return Wrap(
                                     spacing: 8.0,
                                     runSpacing: 8.0,
@@ -389,78 +421,34 @@ class _MoreCuisinesWidgetState extends State<MoreCuisinesWidget> {
                                                   ),
                                                 ),
                                                 Expanded(
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Expanded(
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      8.0,
-                                                                      2.0,
-                                                                      0.0,
-                                                                      2.0),
-                                                          child: Text(
-                                                            getJsonField(
-                                                              recipesItem,
-                                                              r'''$.title''',
-                                                            ).toString(),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .titleMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
-                                                                  color: Color(
-                                                                      0xFF14181B),
-                                                                  fontSize:
-                                                                      11.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Expanded(
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(8.0, 4.0,
+                                                            .fromSTEB(8.0, 12.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      '${getJsonField(
+                                                      getJsonField(
                                                         recipesItem,
-                                                        r'''$.nutrition.nutrients[0].amount''',
-                                                      ).toString()} kCal',
+                                                        r'''$.title''',
+                                                      ).toString(),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodySmall
+                                                              .titleMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
                                                                 color: Color(
-                                                                    0xFF57636C),
-                                                                fontSize: 12.0,
+                                                                    0xFF14181B),
+                                                                fontSize: 14.0,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .normal,
+                                                                        .w500,
                                                                 useGoogleFonts: GoogleFonts
                                                                         .asMap()
                                                                     .containsKey(
                                                                         FlutterFlowTheme.of(context)
-                                                                            .bodySmallFamily),
+                                                                            .titleMediumFamily),
                                                               ),
                                                     ),
                                                   ),

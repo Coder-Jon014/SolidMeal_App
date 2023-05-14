@@ -37,6 +37,14 @@ class _$UserFavoriteRecordSerializer
             specifiedType:
                 const FullType(BuiltList, const [const FullType(int)])));
     }
+    value = object.timeAdded;
+    if (value != null) {
+      result
+        ..add('timeAdded')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(DateTime)])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -70,6 +78,12 @@ class _$UserFavoriteRecordSerializer
                       const FullType(BuiltList, const [const FullType(int)]))!
               as BuiltList<Object?>);
           break;
+        case 'timeAdded':
+          result.timeAdded.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(DateTime)]))!
+              as BuiltList<Object?>);
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -89,13 +103,17 @@ class _$UserFavoriteRecord extends UserFavoriteRecord {
   @override
   final BuiltList<int>? recipeId;
   @override
+  final BuiltList<DateTime>? timeAdded;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UserFavoriteRecord(
           [void Function(UserFavoriteRecordBuilder)? updates]) =>
       (new UserFavoriteRecordBuilder()..update(updates))._build();
 
-  _$UserFavoriteRecord._({this.userId, this.recipeId, this.ffRef}) : super._();
+  _$UserFavoriteRecord._(
+      {this.userId, this.recipeId, this.timeAdded, this.ffRef})
+      : super._();
 
   @override
   UserFavoriteRecord rebuild(
@@ -112,6 +130,7 @@ class _$UserFavoriteRecord extends UserFavoriteRecord {
     return other is UserFavoriteRecord &&
         userId == other.userId &&
         recipeId == other.recipeId &&
+        timeAdded == other.timeAdded &&
         ffRef == other.ffRef;
   }
 
@@ -120,6 +139,7 @@ class _$UserFavoriteRecord extends UserFavoriteRecord {
     var _$hash = 0;
     _$hash = $jc(_$hash, userId.hashCode);
     _$hash = $jc(_$hash, recipeId.hashCode);
+    _$hash = $jc(_$hash, timeAdded.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -130,6 +150,7 @@ class _$UserFavoriteRecord extends UserFavoriteRecord {
     return (newBuiltValueToStringHelper(r'UserFavoriteRecord')
           ..add('userId', userId)
           ..add('recipeId', recipeId)
+          ..add('timeAdded', timeAdded)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -147,6 +168,12 @@ class UserFavoriteRecordBuilder
   ListBuilder<int> get recipeId => _$this._recipeId ??= new ListBuilder<int>();
   set recipeId(ListBuilder<int>? recipeId) => _$this._recipeId = recipeId;
 
+  ListBuilder<DateTime>? _timeAdded;
+  ListBuilder<DateTime> get timeAdded =>
+      _$this._timeAdded ??= new ListBuilder<DateTime>();
+  set timeAdded(ListBuilder<DateTime>? timeAdded) =>
+      _$this._timeAdded = timeAdded;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -160,6 +187,7 @@ class UserFavoriteRecordBuilder
     if ($v != null) {
       _userId = $v.userId;
       _recipeId = $v.recipeId?.toBuilder();
+      _timeAdded = $v.timeAdded?.toBuilder();
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -185,12 +213,17 @@ class UserFavoriteRecordBuilder
     try {
       _$result = _$v ??
           new _$UserFavoriteRecord._(
-              userId: userId, recipeId: _recipeId?.build(), ffRef: ffRef);
+              userId: userId,
+              recipeId: _recipeId?.build(),
+              timeAdded: _timeAdded?.build(),
+              ffRef: ffRef);
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'recipeId';
         _recipeId?.build();
+        _$failedField = 'timeAdded';
+        _timeAdded?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'UserFavoriteRecord', _$failedField, e.toString());

@@ -116,6 +116,21 @@ class _$RecipesRecordSerializer implements StructuredSerializer<RecipesRecord> {
         ..add('recipe_id')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
+    value = object.recipeURL;
+    if (value != null) {
+      result
+        ..add('recipeURL')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.recipeIngredientAmount;
+    if (value != null) {
+      result
+        ..add('recipe_ingredient_amount')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(double)])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -206,6 +221,16 @@ class _$RecipesRecordSerializer implements StructuredSerializer<RecipesRecord> {
           result.recipeId = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
+        case 'recipeURL':
+          result.recipeURL = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'recipe_ingredient_amount':
+          result.recipeIngredientAmount.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(double)]))!
+              as BuiltList<Object?>);
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -247,6 +272,10 @@ class _$RecipesRecord extends RecipesRecord {
   @override
   final int? recipeId;
   @override
+  final String? recipeURL;
+  @override
+  final BuiltList<double>? recipeIngredientAmount;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$RecipesRecord([void Function(RecipesRecordBuilder)? updates]) =>
@@ -266,6 +295,8 @@ class _$RecipesRecord extends RecipesRecord {
       this.readyInMinutes,
       this.servings,
       this.recipeId,
+      this.recipeURL,
+      this.recipeIngredientAmount,
       this.ffRef})
       : super._();
 
@@ -293,6 +324,8 @@ class _$RecipesRecord extends RecipesRecord {
         readyInMinutes == other.readyInMinutes &&
         servings == other.servings &&
         recipeId == other.recipeId &&
+        recipeURL == other.recipeURL &&
+        recipeIngredientAmount == other.recipeIngredientAmount &&
         ffRef == other.ffRef;
   }
 
@@ -312,6 +345,8 @@ class _$RecipesRecord extends RecipesRecord {
     _$hash = $jc(_$hash, readyInMinutes.hashCode);
     _$hash = $jc(_$hash, servings.hashCode);
     _$hash = $jc(_$hash, recipeId.hashCode);
+    _$hash = $jc(_$hash, recipeURL.hashCode);
+    _$hash = $jc(_$hash, recipeIngredientAmount.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -333,6 +368,8 @@ class _$RecipesRecord extends RecipesRecord {
           ..add('readyInMinutes', readyInMinutes)
           ..add('servings', servings)
           ..add('recipeId', recipeId)
+          ..add('recipeURL', recipeURL)
+          ..add('recipeIngredientAmount', recipeIngredientAmount)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -411,6 +448,16 @@ class RecipesRecordBuilder
   int? get recipeId => _$this._recipeId;
   set recipeId(int? recipeId) => _$this._recipeId = recipeId;
 
+  String? _recipeURL;
+  String? get recipeURL => _$this._recipeURL;
+  set recipeURL(String? recipeURL) => _$this._recipeURL = recipeURL;
+
+  ListBuilder<double>? _recipeIngredientAmount;
+  ListBuilder<double> get recipeIngredientAmount =>
+      _$this._recipeIngredientAmount ??= new ListBuilder<double>();
+  set recipeIngredientAmount(ListBuilder<double>? recipeIngredientAmount) =>
+      _$this._recipeIngredientAmount = recipeIngredientAmount;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -436,6 +483,8 @@ class RecipesRecordBuilder
       _readyInMinutes = $v.readyInMinutes;
       _servings = $v.servings;
       _recipeId = $v.recipeId;
+      _recipeURL = $v.recipeURL;
+      _recipeIngredientAmount = $v.recipeIngredientAmount?.toBuilder();
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -475,6 +524,8 @@ class RecipesRecordBuilder
               readyInMinutes: readyInMinutes,
               servings: servings,
               recipeId: recipeId,
+              recipeURL: recipeURL,
+              recipeIngredientAmount: _recipeIngredientAmount?.build(),
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;
@@ -494,6 +545,9 @@ class RecipesRecordBuilder
         _nutrientName?.build();
         _$failedField = 'nutrientPercentofDailyNeeds';
         _nutrientPercentofDailyNeeds?.build();
+
+        _$failedField = 'recipeIngredientAmount';
+        _recipeIngredientAmount?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'RecipesRecord', _$failedField, e.toString());

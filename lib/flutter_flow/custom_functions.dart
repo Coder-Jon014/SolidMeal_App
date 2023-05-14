@@ -71,6 +71,7 @@ List<String>? nutrientUnitAdder() {
 
   return nutrientUnits;
 }
+
 dynamic knnAlgorithmIntegrator(
   double carbohydrates,
   double protein,

@@ -43,6 +43,11 @@ abstract class RecipesRecord
   @BuiltValueField(wireName: 'recipe_id')
   int? get recipeId;
 
+  String? get recipeURL;
+
+  @BuiltValueField(wireName: 'recipe_ingredient_amount')
+  BuiltList<double>? get recipeIngredientAmount;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -60,7 +65,9 @@ abstract class RecipesRecord
     ..nutrientPercentofDailyNeeds = ListBuilder()
     ..readyInMinutes = 0.0
     ..servings = 0.0
-    ..recipeId = 0;
+    ..recipeId = 0
+    ..recipeURL = ''
+    ..recipeIngredientAmount = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('recipes');
@@ -90,6 +97,7 @@ Map<String, dynamic> createRecipesRecordData({
   double? readyInMinutes,
   double? servings,
   int? recipeId,
+  String? recipeURL,
 }) {
   final firestoreData = serializers.toFirestore(
     RecipesRecord.serializer,
@@ -107,7 +115,9 @@ Map<String, dynamic> createRecipesRecordData({
         ..nutrientPercentofDailyNeeds = null
         ..readyInMinutes = readyInMinutes
         ..servings = servings
-        ..recipeId = recipeId,
+        ..recipeId = recipeId
+        ..recipeURL = recipeURL
+        ..recipeIngredientAmount = null,
     ),
   );
 

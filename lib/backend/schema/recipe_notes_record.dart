@@ -17,6 +17,14 @@ abstract class RecipeNotesRecord
 
   String? get recipeNoteGiverImage;
 
+  DateTime? get dateCreated;
+
+  String? get willTry;
+
+  bool? get loved;
+
+  String? get noteTag;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -26,7 +34,10 @@ abstract class RecipeNotesRecord
   static void _initializeBuilder(RecipeNotesRecordBuilder builder) => builder
     ..recipeNotes = ''
     ..recipeNoteGiver = ''
-    ..recipeNoteGiverImage = '';
+    ..recipeNoteGiverImage = ''
+    ..willTry = ''
+    ..loved = false
+    ..noteTag = '';
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
       parent != null
@@ -58,6 +69,10 @@ Map<String, dynamic> createRecipeNotesRecordData({
   String? recipeNotes,
   String? recipeNoteGiver,
   String? recipeNoteGiverImage,
+  DateTime? dateCreated,
+  String? willTry,
+  bool? loved,
+  String? noteTag,
 }) {
   final firestoreData = serializers.toFirestore(
     RecipeNotesRecord.serializer,
@@ -65,7 +80,11 @@ Map<String, dynamic> createRecipeNotesRecordData({
       (r) => r
         ..recipeNotes = recipeNotes
         ..recipeNoteGiver = recipeNoteGiver
-        ..recipeNoteGiverImage = recipeNoteGiverImage,
+        ..recipeNoteGiverImage = recipeNoteGiverImage
+        ..dateCreated = dateCreated
+        ..willTry = willTry
+        ..loved = loved
+        ..noteTag = noteTag,
     ),
   );
 

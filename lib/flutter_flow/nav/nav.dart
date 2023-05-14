@@ -129,12 +129,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : ProfilePageWidget(),
         ),
         FFRoute(
-          name: 'Home',
-          path: '/home',
-          builder: (context, params) =>
-              params.isEmpty ? NavBarPage(initialPage: 'Home') : HomeWidget(),
-        ),
-        FFRoute(
           name: 'DetailsScreen',
           path: '/detailsScreen',
           builder: (context, params) => DetailsScreenWidget(
@@ -162,14 +156,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'onboarding3',
           path: '/onboarding3',
           builder: (context, params) => Onboarding3Widget(),
-        ),
-        FFRoute(
-          name: 'MoreCuisines',
-          path: '/moreCuisines',
-          builder: (context, params) => MoreCuisinesWidget(
-            cuisine: params.getParam('cuisine', ParamType.String),
-            query: params.getParam('query', ParamType.String),
-          ),
         ),
         FFRoute(
           name: 'DietPage',
@@ -233,6 +219,41 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => DessertWidget(
             type: params.getParam('type', ParamType.String),
             title: params.getParam('title', ParamType.String),
+          ),
+        ),
+        FFRoute(
+          name: 'Home',
+          path: '/home',
+          builder: (context, params) =>
+              params.isEmpty ? NavBarPage(initialPage: 'Home') : HomeWidget(),
+        ),
+        FFRoute(
+          name: 'recipeAdder',
+          path: '/recipeAdder',
+          builder: (context, params) => RecipeAdderWidget(
+            id: params.getParam('id', ParamType.int),
+          ),
+        ),
+        FFRoute(
+          name: 'DetailsScreenDatabase',
+          path: '/detailsScreenDatabase',
+          builder: (context, params) => DetailsScreenDatabaseWidget(
+            recipeId: params.getParam('recipeId', ParamType.int),
+          ),
+        ),
+        FFRoute(
+          name: 'RecipeNutrientContentPageDatabase',
+          path: '/recipeNutrientContentPageDatabase',
+          builder: (context, params) => RecipeNutrientContentPageDatabaseWidget(
+            id: params.getParam('id', ParamType.int),
+          ),
+        ),
+        FFRoute(
+          name: 'NoteMaker',
+          path: '/noteMaker',
+          builder: (context, params) => NoteMakerWidget(
+            recipeRef: params.getParam(
+                'recipeRef', ParamType.DocumentReference, false, ['recipes']),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

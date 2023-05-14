@@ -44,6 +44,7 @@ dependencies:
   firebase_storage: 11.0.7
   firebase_storage_platform_interface: 4.1.25
   firebase_storage_web: 3.3.17
+  floating_bottom_navigation_bar: 1.5.2
   flutter_animate: 4.1.1+1
   flutter_cache_manager: 3.3.0
   flutter_plugin_android_lifecycle: 2.0.9

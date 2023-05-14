@@ -43,7 +43,7 @@ class RecipesCall {
           'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch',
       callType: ApiCallType.GET,
       headers: {
-        'X-RapidAPI-Key': '994c1691b7msh42adba50cab58fdp1e1050jsnbf29a65cf268',
+        'X-RapidAPI-Key': '92d155dd53msh7f93ade944b4736p19d9f0jsne5b6faf7387d',
         'X-RapidAPI-Host':
             'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
       },
@@ -149,7 +149,7 @@ class RecipeInfoCall {
           'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk',
       callType: ApiCallType.GET,
       headers: {
-        'X-RapidAPI-Key': '994c1691b7msh42adba50cab58fdp1e1050jsnbf29a65cf268',
+        'X-RapidAPI-Key': '92d155dd53msh7f93ade944b4736p19d9f0jsne5b6faf7387d',
         'X-RapidAPI-Host':
             'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
       },

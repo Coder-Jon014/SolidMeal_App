@@ -15,13 +15,16 @@ abstract class UserFavoriteRecord
 
   BuiltList<int>? get recipeId;
 
+  BuiltList<DateTime>? get timeAdded;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(UserFavoriteRecordBuilder builder) => builder
     ..userId = ''
-    ..recipeId = ListBuilder();
+    ..recipeId = ListBuilder()
+    ..timeAdded = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('user_favorite');
@@ -53,7 +56,8 @@ Map<String, dynamic> createUserFavoriteRecordData({
     UserFavoriteRecord(
       (u) => u
         ..userId = userId
-        ..recipeId = null,
+        ..recipeId = null
+        ..timeAdded = null,
     ),
   );
 

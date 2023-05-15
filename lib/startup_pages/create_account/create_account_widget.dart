@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -724,8 +725,11 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                 .emailAddressController.text,
                                             displayName:
                                                 '${_model.firstNameController.text} ${_model.lastNameController.text}',
-                                            photoUrl: '',
-                                            uid: '',
+                                            photoUrl:
+                                                'https://images.unsplash.com/photo-1610737241336-371badac3b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+                                            uid: random_data
+                                                .randomInteger(0, 100000)
+                                                .toString(),
                                             createdTime: getCurrentTimestamp,
                                             firstName:
                                                 _model.firstNameController.text,

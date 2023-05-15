@@ -508,6 +508,18 @@ class _GetToKnow1WidgetState extends State<GetToKnow1Widget>
                                                             .update(
                                                                 usersUpdateData5);
 
+                                                        final usersUpdateData6 =
+                                                            {
+                                                          'list_of_illness':
+                                                              FieldValue
+                                                                  .arrayUnion([
+                                                            'Hypertension'
+                                                          ]),
+                                                        };
+                                                        await currentUserReference!
+                                                            .update(
+                                                                usersUpdateData6);
+
                                                         final userNutrientContentUpdateData2 =
                                                             createUserNutrientContentRecordData(
                                                           maxSaturatedFat:
@@ -595,6 +607,25 @@ class _GetToKnow1WidgetState extends State<GetToKnow1Widget>
                                                             .reference
                                                             .update(
                                                                 userNutrientContentUpdateData3);
+
+                                                        final usersUpdateData7 =
+                                                            {
+                                                          'list_of_illness':
+                                                              FieldValue
+                                                                  .arrayUnion(
+                                                                      ['None']),
+                                                        };
+                                                        await currentUserReference!
+                                                            .update(
+                                                                usersUpdateData7);
+
+                                                        final usersUpdateData8 =
+                                                            createUsersRecordData(
+                                                          userIllness: 'None',
+                                                        );
+                                                        await currentUserReference!
+                                                            .update(
+                                                                usersUpdateData8);
 
                                                         context.pushNamed(
                                                             'GetToKnow2');

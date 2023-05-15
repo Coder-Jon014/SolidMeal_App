@@ -1225,7 +1225,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               );
                             }
                             final wrapRecipesResponse = snapshot.data!;
-                           final recipesJson = wrapRecipesResponse
+                            final recipesJson = wrapRecipesResponse
                                 .jsonBody; // get the JSON body of the response
                             // Convert the JSON to a list of maps (recipes)
                             List<Map<String, dynamic>> recipes =

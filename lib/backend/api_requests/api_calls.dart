@@ -149,12 +149,10 @@ class RecipeInfoCall {
           'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk',
       callType: ApiCallType.GET,
       headers: {
-        'X-RapidAPI-Key': 
-            // ADD KEY HERE,
+        'X-RapidAPI-Key': '92d155dd53msh7f93ade944b4736p19d9f0jsne5b6faf7387d',
         'X-RapidAPI-Host':
-            // ADD HOST HERE,
+            'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
       },
-      
       params: {
         'ids': ids,
         'includeNutrition': true,

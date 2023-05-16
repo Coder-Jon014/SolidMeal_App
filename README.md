@@ -14,7 +14,7 @@ https://solidmeal.vercel.app/
 flutter pub get
 flutter packages pub run build_runner build --delete-conflicting-outputs
 ```
-# ENVIRONMENT VARIABLES
+### ENVIRONMENT VARIABLES
 The application uses environment variables for certain configurations. To set these:
 
 Rename the .env.example file to .env.

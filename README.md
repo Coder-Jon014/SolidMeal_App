@@ -3,7 +3,7 @@
 SolidMeal is a mobile application designed to assist individuals with specific health conditions in finding suitable and healthy recipes. Leveraging the power of the K-nearest neighbours (KNN) algorithm, SolidMeal provides personalized recipe recommendations based on your health profile and dietary needs. Discover meals that not only taste good but also contribute positively to your health.
 
 Beta Version of the app is available here: 
-https://drive.google.com/file/d/18cy7txHUkC0tKAuoXw8yKfsugwtApTkd/view?usp=sharing
+https://drive.google.com/file/d/1-FgI8AuEEWy6_BMb4mft2pkfyZa2Wc0T/view?usp=share_link
 
 Website here:
 https://solidmeal.vercel.app/

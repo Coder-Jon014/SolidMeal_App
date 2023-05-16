@@ -54,7 +54,7 @@ class _DetailsScreenWidgetState extends State<DetailsScreenWidget> {
 
     return FutureBuilder<ApiCallResponse>(
       future: RecipeInfoCall.call(
-        ids: widget.recipeId,
+        ids: (widget.recipeId).toString(),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.

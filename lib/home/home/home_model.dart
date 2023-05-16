@@ -16,7 +16,7 @@ import 'package:provider/provider.dart';
 class HomeModel extends FlutterFlowModel {
   ///  Local state fields for this page.
 
-  String? queryVariable = 'chicken';
+  String? queryVariable = 'pasta';
 
   ///  State fields for stateful widgets in this page.
 

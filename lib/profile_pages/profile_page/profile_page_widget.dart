@@ -1,5 +1,4 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -1413,10 +1412,15 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                   final likedRecipesItem =
                                                       likedRecipes[
                                                           likedRecipesIndex];
-                                                  return FutureBuilder<
-                                                      ApiCallResponse>(
-                                                    future: RecipeInfoCall.call(
-                                                      ids: likedRecipesItem,
+                                                  return StreamBuilder<
+                                                      List<RecipesRecord>>(
+                                                    stream: queryRecipesRecord(
+                                                      queryBuilder: (recipesRecord) =>
+                                                          recipesRecord.where(
+                                                              'recipe_id',
+                                                              isEqualTo:
+                                                                  likedRecipesItem),
+                                                      singleRecord: true,
                                                     ),
                                                     builder:
                                                         (context, snapshot) {
@@ -1434,8 +1438,20 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           ),
                                                         );
                                                       }
-                                                      final containerRecipeInfoResponse =
+                                                      List<RecipesRecord>
+                                                          containerRecipesRecordList =
                                                           snapshot.data!;
+                                                      // Return an empty Container when the item does not exist.
+                                                      if (snapshot
+                                                          .data!.isEmpty) {
+                                                        return Container();
+                                                      }
+                                                      final containerRecipesRecord =
+                                                          containerRecipesRecordList
+                                                                  .isNotEmpty
+                                                              ? containerRecipesRecordList
+                                                                  .first
+                                                              : null;
                                                       return InkWell(
                                                         splashColor:
                                                             Colors.transparent,
@@ -1447,15 +1463,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                             Colors.transparent,
                                                         onTap: () async {
                                                           context.pushNamed(
-                                                            'DetailsScreen',
+                                                            'DetailsScreenDatabase',
                                                             queryParams: {
                                                               'recipeId':
                                                                   serializeParam(
-                                                                RecipeInfoCall
-                                                                    .id(
-                                                                  containerRecipeInfoResponse
-                                                                      .jsonBody,
-                                                                ),
+                                                                likedRecipesItem,
                                                                 ParamType.int,
                                                               ),
                                                             }.withoutNulls,
@@ -1511,11 +1523,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                               10.0),
                                                                   child: Image
                                                                       .network(
-                                                                    RecipeInfoCall
-                                                                        .image(
-                                                                      containerRecipeInfoResponse
-                                                                          .jsonBody,
-                                                                    ),
+                                                                    containerRecipesRecord!
+                                                                        .recipeImage!,
                                                                     width: double
                                                                         .infinity,
                                                                     height:
@@ -1524,34 +1533,34 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         .cover,
                                                                   ),
                                                                 ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          8.0,
-                                                                          12.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child: Text(
-                                                                    RecipeInfoCall
-                                                                        .title(
-                                                                      containerRecipeInfoResponse
-                                                                          .jsonBody,
-                                                                    ).toString(),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Outfit',
-                                                                          color:
-                                                                              Color(0xFF14181B),
-                                                                          fontSize:
-                                                                              11.0,
-                                                                          fontWeight:
-                                                                              FontWeight.normal,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                        ),
+                                                                Expanded(
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            8.0,
+                                                                            12.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      containerRecipesRecord!
+                                                                          .recipeTitle!,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Plus Jakarta Sans',
+                                                                            color:
+                                                                                Color(0xFF14181B),
+                                                                            fontSize:
+                                                                                14.0,
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                          ),
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ],

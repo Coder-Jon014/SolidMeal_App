@@ -51,7 +51,7 @@ class _RecipeNutrientContentPageWidgetState
 
     return FutureBuilder<ApiCallResponse>(
       future: RecipeInfoCall.call(
-        ids: widget.id,
+        ids: (widget.id).toString(),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.

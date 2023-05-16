@@ -846,6 +846,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             maxSodium: homeUserNutrientContentRecord!.maxSodium,
                             query: _model.queryVariable,
                             number: 1,
+                            diet: homeUserNutrientContentRecord!.diets!.isNotEmpty ? homeUserNutrientContentRecord!.diets!.first : null,
                             intolerances: functions.stringListJoiner(
                                 homeUserNutrientContentRecord!.intolerances!
                                     .toList()),
@@ -1190,6 +1191,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             maxSodium: homeUserNutrientContentRecord!.maxSodium,
                             query: _model.queryVariable,
                             number: 5,
+                            diet: homeUserNutrientContentRecord!.diets!.isNotEmpty ? homeUserNutrientContentRecord!.diets!.first : null,
                             intolerances: functions.stringListJoiner(
                                 homeUserNutrientContentRecord!.intolerances!
                                     .toList()),

@@ -227,6 +227,7 @@ class _MainCourseWidgetState extends State<MainCourseWidget> {
                           'chicken',
                         ),
                         number: 20,
+                        diet: columnUserNutrientContentRecord!.diets!.isNotEmpty ? columnUserNutrientContentRecord!.diets!.first : null,
                         intolerances: functions.stringListJoiner(
                             columnUserNutrientContentRecord!.intolerances!
                                 .toList()),
@@ -243,7 +244,7 @@ class _MainCourseWidgetState extends State<MainCourseWidget> {
                             columnUserNutrientContentRecord!.maxCalories,
                         maxMagnesium:
                             columnUserNutrientContentRecord!.maxMagnesium,
-                        offset: 10,
+                        offset: 1,
                         type: widget.type,
                       ),
                       builder: (context, snapshot) {

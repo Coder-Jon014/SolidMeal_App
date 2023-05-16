@@ -226,6 +226,7 @@ class _DessertWidgetState extends State<DessertWidget> {
                           'cake',
                         ),
                         number: 20,
+                        diet: columnUserNutrientContentRecord!.diets!.isNotEmpty ? columnUserNutrientContentRecord!.diets!.first : null,
                         intolerances: functions.stringListJoiner(
                             columnUserNutrientContentRecord!.intolerances!
                                 .toList()),

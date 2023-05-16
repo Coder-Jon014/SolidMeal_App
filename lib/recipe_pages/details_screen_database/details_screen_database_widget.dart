@@ -1,5 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/create_note_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -7,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -370,7 +373,7 @@ class _DetailsScreenDatabaseWidgetState
                       Divider(),
                       Expanded(
                         child: DefaultTabController(
-                          length: 4,
+                          length: 5,
                           initialIndex: 0,
                           child: Column(
                             children: [
@@ -427,6 +430,12 @@ class _DetailsScreenDatabaseWidgetState
                                       text: 'Notes',
                                       icon: Icon(
                                         Icons.rate_review,
+                                      ),
+                                    ),
+                                    Tab(
+                                      text: 'Similar',
+                                      icon: FaIcon(
+                                        FontAwesomeIcons.receipt,
                                       ),
                                     ),
                                   ],
@@ -1253,223 +1262,616 @@ class _DetailsScreenDatabaseWidgetState
                                           Align(
                                             alignment:
                                                 AlignmentDirectional(0.0, 1.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                  'NoteMaker',
-                                                  queryParams: {
-                                                    'recipeRef': serializeParam(
-                                                      detailsScreenDatabaseRecipesRecord!
-                                                          .reference,
-                                                      ParamType
-                                                          .DocumentReference,
+                                            child: StreamBuilder<
+                                                List<UserFavoriteRecord>>(
+                                              stream: queryUserFavoriteRecord(
+                                                queryBuilder:
+                                                    (userFavoriteRecord) =>
+                                                        userFavoriteRecord.where(
+                                                            'userId',
+                                                            isEqualTo:
+                                                                currentUserUid),
+                                                singleRecord: true,
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 150.0,
+                                                      height: 150.0,
+                                                      child: SpinKitPulse(
+                                                        color:
+                                                            Color(0xFF4B39EF),
+                                                        size: 150.0,
+                                                      ),
                                                     ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: Material(
-                                                color: Colors.transparent,
-                                                elevation: 5.0,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                    bottomLeft:
-                                                        Radius.circular(0.0),
-                                                    bottomRight:
-                                                        Radius.circular(0.0),
-                                                    topLeft:
-                                                        Radius.circular(16.0),
-                                                    topRight:
-                                                        Radius.circular(16.0),
-                                                  ),
-                                                ),
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  height: 100.0,
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.white,
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                      bottomLeft:
-                                                          Radius.circular(0.0),
-                                                      bottomRight:
-                                                          Radius.circular(0.0),
-                                                      topLeft:
-                                                          Radius.circular(16.0),
-                                                      topRight:
-                                                          Radius.circular(16.0),
-                                                    ),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(16.0, 0.0,
-                                                                16.0, 0.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      40.0),
-                                                          child: Image.network(
-                                                            'https://images.unsplash.com/photo-1610737241336-371badac3b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-                                                            width: 40.0,
-                                                            height: 40.0,
-                                                            fit: BoxFit.cover,
+                                                  );
+                                                }
+                                                List<UserFavoriteRecord>
+                                                    unTappedUserFavoriteRecordList =
+                                                    snapshot.data!;
+                                                // Return an empty Container when the item does not exist.
+                                                if (snapshot.data!.isEmpty) {
+                                                  return Container();
+                                                }
+                                                final unTappedUserFavoriteRecord =
+                                                    unTappedUserFavoriteRecordList
+                                                            .isNotEmpty
+                                                        ? unTappedUserFavoriteRecordList
+                                                            .first
+                                                        : null;
+                                                return InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      context: context,
+                                                      builder:
+                                                          (bottomSheetContext) {
+                                                        return Padding(
+                                                          padding: MediaQuery.of(
+                                                                  bottomSheetContext)
+                                                              .viewInsets,
+                                                          child:
+                                                              CreateNoteWidget(
+                                                            userName:
+                                                                currentUserDisplayName,
+                                                            userImage:
+                                                                currentUserPhoto,
+                                                            recipeRef:
+                                                                detailsScreenDatabaseRecipesRecord!
+                                                                    .reference,
+                                                            userFavRef:
+                                                                unTappedUserFavoriteRecord!,
+                                                            recipeId: widget
+                                                                .recipeId!,
                                                           ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        setState(() {}));
+                                                  },
+                                                  child: Material(
+                                                    color: Colors.transparent,
+                                                    elevation: 5.0,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                0.0),
+                                                        bottomRight:
+                                                            Radius.circular(
+                                                                0.0),
+                                                        topLeft:
+                                                            Radius.circular(
+                                                                16.0),
+                                                        topRight:
+                                                            Radius.circular(
+                                                                16.0),
+                                                      ),
+                                                    ),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 100.0,
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.white,
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                          bottomLeft:
+                                                              Radius.circular(
+                                                                  0.0),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  0.0),
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  16.0),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  16.0),
                                                         ),
-                                                        Expanded(
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    16.0,
+                                                                    0.0,
+                                                                    16.0,
+                                                                    0.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          40.0),
+                                                              child:
+                                                                  Image.network(
+                                                                'https://images.unsplash.com/photo-1610737241336-371badac3b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+                                                                width: 40.0,
+                                                                height: 40.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                            Expanded(
+                                                              child: Padding(
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         12.0,
                                                                         12.0,
                                                                         12.0),
-                                                            child:
-                                                                TextFormField(
-                                                              controller: _model
-                                                                  .shortBioController,
-                                                              obscureText:
-                                                                  false,
-                                                              decoration:
-                                                                  InputDecoration(
-                                                                isDense: true,
-                                                                hintText:
-                                                                    'Enter your note here...',
-                                                                hintStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
-                                                                      color: Color(
-                                                                          0xFF57636C),
-                                                                      fontSize:
-                                                                          14.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                child:
+                                                                    TextFormField(
+                                                                  controller: _model
+                                                                      .shortBioController,
+                                                                  onChanged: (_) =>
+                                                                      EasyDebounce
+                                                                          .debounce(
+                                                                    '_model.shortBioController',
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            2000),
+                                                                    () async {
+                                                                      await showModalBottomSheet(
+                                                                        isScrollControlled:
+                                                                            true,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (bottomSheetContext) {
+                                                                          return Padding(
+                                                                            padding:
+                                                                                MediaQuery.of(bottomSheetContext).viewInsets,
+                                                                            child:
+                                                                                CreateNoteWidget(
+                                                                              userName: currentUserDisplayName,
+                                                                              userImage: currentUserPhoto,
+                                                                              recipeRef: detailsScreenDatabaseRecipesRecord!.reference,
+                                                                              userFavRef: unTappedUserFavoriteRecord!,
+                                                                              recipeId: widget.recipeId!,
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                      ).then((value) =>
+                                                                          setState(
+                                                                              () {}));
+                                                                    },
+                                                                  ),
+                                                                  obscureText:
+                                                                      false,
+                                                                  decoration:
+                                                                      InputDecoration(
+                                                                    isDense:
+                                                                        true,
+                                                                    hintText:
+                                                                        'Enter your note here...',
+                                                                    hintStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Plus Jakarta Sans',
+                                                                          color:
+                                                                              Color(0xFF57636C),
+                                                                          fontSize:
+                                                                              14.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                        ),
+                                                                    enabledBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0xFFE0E3E7),
+                                                                        width:
+                                                                            2.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              18.0),
                                                                     ),
-                                                                enabledBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0xFFE0E3E7),
-                                                                    width: 2.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
+                                                                    focusedBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0xFF4B39EF),
+                                                                        width:
+                                                                            2.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
                                                                               18.0),
-                                                                ),
-                                                                focusedBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0xFF4B39EF),
-                                                                    width: 2.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
+                                                                    ),
+                                                                    errorBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0xFFFF5963),
+                                                                        width:
+                                                                            2.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
                                                                               18.0),
-                                                                ),
-                                                                errorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0xFFFF5963),
-                                                                    width: 2.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
+                                                                    ),
+                                                                    focusedErrorBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0xFFFF5963),
+                                                                        width:
+                                                                            2.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
                                                                               18.0),
-                                                                ),
-                                                                focusedErrorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0xFFFF5963),
-                                                                    width: 2.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              18.0),
-                                                                ),
-                                                                contentPadding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                                    ),
+                                                                    contentPadding:
+                                                                        EdgeInsetsDirectional.fromSTEB(
                                                                             20.0,
                                                                             32.0,
                                                                             20.0,
                                                                             12.0),
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Plus Jakarta Sans',
-                                                                    color: Color(
-                                                                        0xFF14181B),
-                                                                    fontSize:
-                                                                        14.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                   ),
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .start,
-                                                              keyboardType:
-                                                                  TextInputType
-                                                                      .multiline,
-                                                              validator: _model
-                                                                  .shortBioControllerValidator
-                                                                  .asValidator(
-                                                                      context),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Plus Jakarta Sans',
+                                                                        color: Color(
+                                                                            0xFF14181B),
+                                                                        fontSize:
+                                                                            14.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      ),
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  keyboardType:
+                                                                      TextInputType
+                                                                          .multiline,
+                                                                  validator: _model
+                                                                      .shortBioControllerValidator
+                                                                      .asValidator(
+                                                                          context),
+                                                                ),
+                                                              ),
                                                             ),
-                                                          ),
+                                                            Icon(
+                                                              Icons
+                                                                  .camera_alt_outlined,
+                                                              color: Color(
+                                                                  0xFFC0C0C0),
+                                                              size: 32.0,
+                                                            ),
+                                                          ],
                                                         ),
-                                                        Icon(
-                                                          Icons
-                                                              .camera_alt_outlined,
-                                                          color:
-                                                              Color(0xFFC0C0C0),
-                                                          size: 32.0,
-                                                        ),
-                                                      ],
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ),
+                                                );
+                                              },
                                             ),
                                           ),
                                         ],
+                                      ),
+                                    ),
+                                    KeepAliveWidgetWrapper(
+                                      builder: (context) =>
+                                          FutureBuilder<ApiCallResponse>(
+                                        future: SimilarRecipesCall.call(
+                                          id: widget.recipeId,
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 150.0,
+                                                height: 150.0,
+                                                child: SpinKitPulse(
+                                                  color: Color(0xFF4B39EF),
+                                                  size: 150.0,
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          final columnSimilarRecipesResponse =
+                                              snapshot.data!;
+                                          return SingleChildScrollView(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 12.0, 0.0, 12.0),
+                                                  child: FutureBuilder<
+                                                      ApiCallResponse>(
+                                                    future: RecipeInfoCall.call(
+                                                      ids: functions
+                                                          .integerListJoiner(
+                                                              (SimilarRecipesCall
+                                                                      .id(
+                                                        columnSimilarRecipesResponse
+                                                            .jsonBody,
+                                                      )?.toList() as List<
+                                                                      dynamic>?)
+                                                                  ?.map<int>(
+                                                                      (item) => item
+                                                                          as int)
+                                                                  .toList()),
+                                                    ),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 150.0,
+                                                            height: 150.0,
+                                                            child: SpinKitPulse(
+                                                              color: Color(
+                                                                  0xFF4B39EF),
+                                                              size: 150.0,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      final wrapRecipeInfoResponse =
+                                                          snapshot.data!;
+                                                      return Builder(
+                                                        builder: (context) {
+                                                          final recipes =
+                                                              wrapRecipeInfoResponse
+                                                                  .jsonBody
+                                                                  .toList();
+                                                          return Wrap(
+                                                            spacing: 8.0,
+                                                            runSpacing: 8.0,
+                                                            alignment:
+                                                                WrapAlignment
+                                                                    .start,
+                                                            crossAxisAlignment:
+                                                                WrapCrossAlignment
+                                                                    .start,
+                                                            direction:
+                                                                Axis.horizontal,
+                                                            runAlignment:
+                                                                WrapAlignment
+                                                                    .start,
+                                                            verticalDirection:
+                                                                VerticalDirection
+                                                                    .down,
+                                                            clipBehavior:
+                                                                Clip.none,
+                                                            children: List.generate(
+                                                                recipes.length,
+                                                                (recipesIndex) {
+                                                              final recipesItem =
+                                                                  recipes[
+                                                                      recipesIndex];
+                                                              return StreamBuilder<
+                                                                  List<
+                                                                      RecipeListRecord>>(
+                                                                stream:
+                                                                    queryRecipeListRecord(),
+                                                                builder: (context,
+                                                                    snapshot) {
+                                                                  // Customize what your widget looks like when it's loading.
+                                                                  if (!snapshot
+                                                                      .hasData) {
+                                                                    return Center(
+                                                                      child:
+                                                                          SizedBox(
+                                                                        width:
+                                                                            150.0,
+                                                                        height:
+                                                                            150.0,
+                                                                        child:
+                                                                            SpinKitPulse(
+                                                                          color:
+                                                                              Color(0xFF4B39EF),
+                                                                          size:
+                                                                              150.0,
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  }
+                                                                  List<RecipeListRecord>
+                                                                      containerRecipeListRecordList =
+                                                                      snapshot
+                                                                          .data!;
+                                                                  return InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onTap:
+                                                                        () async {
+                                                                      if (containerRecipeListRecordList
+                                                                          .first
+                                                                          .listOfRecipes!
+                                                                          .toList()
+                                                                          .contains(
+                                                                              getJsonField(
+                                                                            recipesItem,
+                                                                            r'''$.id''',
+                                                                          ))) {
+                                                                        context
+                                                                            .pushNamed(
+                                                                          'DetailsScreenDatabase',
+                                                                          queryParams:
+                                                                              {
+                                                                            'recipeId':
+                                                                                serializeParam(
+                                                                              getJsonField(
+                                                                                recipesItem,
+                                                                                r'''$.id''',
+                                                                              ),
+                                                                              ParamType.int,
+                                                                            ),
+                                                                          }.withoutNulls,
+                                                                        );
+                                                                      } else {
+                                                                        final recipeListUpdateData =
+                                                                            {
+                                                                          'list_of_recipes':
+                                                                              FieldValue.arrayUnion([
+                                                                            getJsonField(
+                                                                              recipesItem,
+                                                                              r'''$.id''',
+                                                                            )
+                                                                          ]),
+                                                                        };
+                                                                        await containerRecipeListRecordList
+                                                                            .first
+                                                                            .reference
+                                                                            .update(recipeListUpdateData);
+
+                                                                        context
+                                                                            .pushNamed(
+                                                                          'recipeAdder',
+                                                                          queryParams:
+                                                                              {
+                                                                            'id':
+                                                                                serializeParam(
+                                                                              getJsonField(
+                                                                                recipesItem,
+                                                                                r'''$.id''',
+                                                                              ),
+                                                                              ParamType.int,
+                                                                            ),
+                                                                          }.withoutNulls,
+                                                                        );
+                                                                      }
+                                                                    },
+                                                                    child:
+                                                                        Container(
+                                                                      width: MediaQuery.of(context)
+                                                                              .size
+                                                                              .width *
+                                                                          0.45,
+                                                                      height:
+                                                                          190.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        boxShadow: [
+                                                                          BoxShadow(
+                                                                            blurRadius:
+                                                                                4.0,
+                                                                            color:
+                                                                                Color(0x230E151B),
+                                                                            offset:
+                                                                                Offset(0.0, 2.0),
+                                                                          )
+                                                                        ],
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(12.0),
+                                                                      ),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            4.0,
+                                                                            4.0,
+                                                                            4.0,
+                                                                            4.0),
+                                                                        child:
+                                                                            Column(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.start,
+                                                                          crossAxisAlignment:
+                                                                              CrossAxisAlignment.start,
+                                                                          children: [
+                                                                            ClipRRect(
+                                                                              borderRadius: BorderRadius.circular(10.0),
+                                                                              child: Image.network(
+                                                                                getJsonField(
+                                                                                  recipesItem,
+                                                                                  r'''$.image''',
+                                                                                ),
+                                                                                width: double.infinity,
+                                                                                height: 115.0,
+                                                                                fit: BoxFit.cover,
+                                                                              ),
+                                                                            ),
+                                                                            Expanded(
+                                                                              child: Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 12.0, 0.0, 0.0),
+                                                                                child: Text(
+                                                                                  getJsonField(
+                                                                                    recipesItem,
+                                                                                    r'''$.title''',
+                                                                                  ).toString(),
+                                                                                  style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                        fontFamily: 'Outfit',
+                                                                                        color: Color(0xFF14181B),
+                                                                                        fontSize: 14.0,
+                                                                                        fontWeight: FontWeight.w500,
+                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                      ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              );
+                                                            }),
+                                                          );
+                                                        },
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
                                       ),
                                     ),
                                   ],

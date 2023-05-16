@@ -226,6 +226,7 @@ class _SaladWidgetState extends State<SaladWidget> {
                           'salad',
                         ),
                         number: 20,
+                        diet: columnUserNutrientContentRecord!.diets!.isNotEmpty ? columnUserNutrientContentRecord!.diets!.first : null,
                         intolerances: functions.stringListJoiner(
                             columnUserNutrientContentRecord!.intolerances!
                                 .toList()),

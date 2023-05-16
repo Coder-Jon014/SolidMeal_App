@@ -38,7 +38,7 @@ class _RecipeAdderWidgetState extends State<RecipeAdderWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.apiResultygm = await RecipeInfoCall.call(
-        ids: widget.id,
+        ids: (widget.id).toString(),
       );
       if ((_model.apiResultygm?.succeeded ?? true)) {
         final recipesCreateData = {

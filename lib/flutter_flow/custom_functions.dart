@@ -126,3 +126,11 @@ double _calculateDistance(Map<String, dynamic> recipe, Map<String, double> targe
   
   return math.sqrt(distance);
 }
+
+String? integerListJoiner(List<int>? integerList) {
+  if (integerList == null || integerList.isEmpty) {
+    return null;
+  }
+
+  return integerList.join(', ');
+}

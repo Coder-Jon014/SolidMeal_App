@@ -14,7 +14,14 @@ https://solidmeal.vercel.app/
 flutter pub get
 flutter packages pub run build_runner build --delete-conflicting-outputs
 ```
+# ENVIRONMENT VARIABLES
+The application uses environment variables for certain configurations. To set these:
 
+Rename the .env.example file to .env.
+Fill in the values for the variables in the .env file. The variables include:
+API_KEY: Your API key for accessing the Spoonacular Recipe Food Nutrition API from Rapid-API.
+Save the file.
+Note: The .env file is included in the .gitignore to ensure sensitive data (like your API key) is not committed to version control. When cloning or forking this repository, ensure you set these variables in your own .env file.
 
 
 # Sample Images of App

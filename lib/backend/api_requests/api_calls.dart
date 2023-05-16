@@ -1,7 +1,10 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import '../../flutter_flow/flutter_flow_util.dart';
+
 
 import 'api_manager.dart';
 
@@ -21,7 +24,7 @@ class SimilarRecipesCall {
       headers: {
         'X-RapidAPI-Host':
             'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-        'X-RapidAPI-Key': '92d155dd53msh7f93ade944b4736p19d9f0jsne5b6faf7387d',
+        'X-RapidAPI-Key': dotenv.env['X_RAPIDAPI_KEY'] ?? 'API KEY not found',
       },
       params: {
         'id': id,
@@ -74,7 +77,7 @@ class RecipesCall {
           'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch',
       callType: ApiCallType.GET,
       headers: {
-        'X-RapidAPI-Key': '92d155dd53msh7f93ade944b4736p19d9f0jsne5b6faf7387d',
+       'X-RapidAPI-Key': dotenv.env['X_RAPIDAPI_KEY'] ?? 'API KEY not found',
         'X-RapidAPI-Host':
             'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
       },
@@ -180,7 +183,7 @@ class RecipeInfoCall {
           'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk',
       callType: ApiCallType.GET,
       headers: {
-        'X-RapidAPI-Key': '92d155dd53msh7f93ade944b4736p19d9f0jsne5b6faf7387d',
+        'X-RapidAPI-Key': dotenv.env['X_RAPIDAPI_KEY'] ?? 'API KEY not found',
         'X-RapidAPI-Host':
             'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
       },

@@ -15,6 +15,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'create_account_model.dart';
 export 'create_account_model.dart';
 
@@ -41,22 +42,22 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
+          begin: 0,
+          end: 1,
         ),
         MoveEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
-          begin: Offset(0.0, 140.0),
-          end: Offset(0.0, 0.0),
+          begin: Offset(0, 140),
+          end: Offset(0, 0),
         ),
         ScaleEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 300.ms,
           begin: Offset(0.9, 0.9),
-          end: Offset(1.0, 1.0),
+          end: Offset(1, 1),
         ),
         TiltEffect(
           curve: Curves.easeInOut,
@@ -104,27 +105,26 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
             Expanded(
               flex: 6,
               child: Container(
-                width: 100.0,
+                width: 100,
                 height: double.infinity,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).primary,
                 ),
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0, -1),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                         child: Container(
-                          width: 200.0,
-                          height: 70.0,
+                          width: 200,
+                          height: 70,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16.0),
+                            borderRadius: BorderRadius.circular(16),
                           ),
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0, 0),
                           child: Text(
                             'SolidMeal',
                             style: FlutterFlowTheme.of(context)
@@ -132,7 +132,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                 .override(
                                   fontFamily: 'Plus Jakarta Sans',
                                   color: Colors.white,
-                                  fontSize: 36.0,
+                                  fontSize: 36,
                                   fontWeight: FontWeight.w600,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
@@ -142,35 +142,34 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 20.0, 20.0, 20.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
                         child: Material(
                           color: Colors.transparent,
-                          elevation: 10.0,
+                          elevation: 10,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12.0),
+                            borderRadius: BorderRadius.circular(12),
                           ),
                           child: Container(
                             width: double.infinity,
                             constraints: BoxConstraints(
-                              maxWidth: 570.0,
+                              maxWidth: 570,
                             ),
                             decoration: BoxDecoration(
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
-                                  blurRadius: 4.0,
+                                  blurRadius: 4,
                                   color: Color(0x33000000),
-                                  offset: Offset(0.0, 2.0),
+                                  offset: Offset(0, 2),
                                 )
                               ],
-                              borderRadius: BorderRadius.circular(12.0),
+                              borderRadius: BorderRadius.circular(12),
                             ),
                             child: Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0, 0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    22.0, 22.0, 22.0, 22.0),
+                                    22, 22, 22, 22),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -183,7 +182,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                           .override(
                                             fontFamily: 'Plus Jakarta Sans',
                                             color: Color(0xFF101213),
-                                            fontSize: 36.0,
+                                            fontSize: 36,
                                             fontWeight: FontWeight.w600,
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
@@ -193,7 +192,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 12.0, 0.0, 24.0),
+                                          0, 12, 0, 24),
                                       child: Text(
                                         'Let\'s get started by filling out the form below.',
                                         textAlign: TextAlign.center,
@@ -202,7 +201,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                             .override(
                                               fontFamily: 'Plus Jakarta Sans',
                                               color: Color(0xFF57636C),
-                                              fontSize: 16.0,
+                                              fontSize: 16,
                                               fontWeight: FontWeight.w500,
                                               useGoogleFonts: GoogleFonts
                                                       .asMap()
@@ -215,7 +214,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 16.0),
+                                          0, 0, 0, 16),
                                       child: Container(
                                         width: double.infinity,
                                         child: TextFormField(
@@ -233,7 +232,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                       fontFamily:
                                                           'Plus Jakarta Sans',
                                                       color: Color(0xFF57636C),
-                                                      fontSize: 16.0,
+                                                      fontSize: 16,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       useGoogleFonts: GoogleFonts
@@ -246,35 +245,35 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFF1F4F8),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFF4B39EF),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             errorBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFE0E3E7),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             focusedErrorBorder:
                                                 OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFE0E3E7),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             filled: true,
                                             fillColor: Color(0xFFF1F4F8),
@@ -284,7 +283,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
                                                 color: Color(0xFF101213),
-                                                fontSize: 16.0,
+                                                fontSize: 16,
                                                 fontWeight: FontWeight.w500,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
@@ -303,7 +302,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 16.0),
+                                          0, 0, 0, 16),
                                       child: Container(
                                         width: double.infinity,
                                         child: TextFormField(
@@ -320,7 +319,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                       fontFamily:
                                                           'Plus Jakarta Sans',
                                                       color: Color(0xFF57636C),
-                                                      fontSize: 16.0,
+                                                      fontSize: 16,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       useGoogleFonts: GoogleFonts
@@ -333,35 +332,35 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFF1F4F8),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFF4B39EF),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             errorBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFE0E3E7),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             focusedErrorBorder:
                                                 OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFE0E3E7),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             filled: true,
                                             fillColor: Color(0xFFF1F4F8),
@@ -371,7 +370,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
                                                 color: Color(0xFF101213),
-                                                fontSize: 16.0,
+                                                fontSize: 16,
                                                 fontWeight: FontWeight.w500,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
@@ -390,7 +389,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 16.0),
+                                          0, 0, 0, 16),
                                       child: Container(
                                         width: double.infinity,
                                         child: TextFormField(
@@ -408,7 +407,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                       fontFamily:
                                                           'Plus Jakarta Sans',
                                                       color: Color(0xFF57636C),
-                                                      fontSize: 16.0,
+                                                      fontSize: 16,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       useGoogleFonts: GoogleFonts
@@ -421,35 +420,35 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFF1F4F8),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFF4B39EF),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             errorBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFE0E3E7),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             focusedErrorBorder:
                                                 OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFE0E3E7),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             filled: true,
                                             fillColor: Color(0xFFF1F4F8),
@@ -459,7 +458,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
                                                 color: Color(0xFF101213),
-                                                fontSize: 16.0,
+                                                fontSize: 16,
                                                 fontWeight: FontWeight.w500,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
@@ -478,7 +477,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 16.0),
+                                          0, 0, 0, 16),
                                       child: Container(
                                         width: double.infinity,
                                         child: TextFormField(
@@ -498,7 +497,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                       fontFamily:
                                                           'Plus Jakarta Sans',
                                                       color: Color(0xFF57636C),
-                                                      fontSize: 16.0,
+                                                      fontSize: 16,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       useGoogleFonts: GoogleFonts
@@ -511,35 +510,35 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFF1F4F8),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFF4B39EF),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             errorBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFFF5963),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             focusedErrorBorder:
                                                 OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFFF5963),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             filled: true,
                                             fillColor: Color(0xFFF1F4F8),
@@ -557,7 +556,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                     : Icons
                                                         .visibility_off_outlined,
                                                 color: Color(0xFF57636C),
-                                                size: 24.0,
+                                                size: 24,
                                               ),
                                             ),
                                           ),
@@ -566,7 +565,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
                                                 color: Color(0xFF101213),
-                                                fontSize: 16.0,
+                                                fontSize: 16,
                                                 fontWeight: FontWeight.w500,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
@@ -583,7 +582,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 16.0),
+                                          0, 0, 0, 16),
                                       child: Container(
                                         width: double.infinity,
                                         child: TextFormField(
@@ -604,7 +603,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                       fontFamily:
                                                           'Plus Jakarta Sans',
                                                       color: Color(0xFF57636C),
-                                                      fontSize: 16.0,
+                                                      fontSize: 16,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       useGoogleFonts: GoogleFonts
@@ -617,35 +616,35 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFF1F4F8),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFF4B39EF),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             errorBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFFF5963),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             focusedErrorBorder:
                                                 OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0xFFFF5963),
-                                                width: 2.0,
+                                                width: 2,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  BorderRadius.circular(12),
                                             ),
                                             filled: true,
                                             fillColor: Color(0xFFF1F4F8),
@@ -664,7 +663,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                     : Icons
                                                         .visibility_off_outlined,
                                                 color: Color(0xFF57636C),
-                                                size: 24.0,
+                                                size: 24,
                                               ),
                                             ),
                                           ),
@@ -673,7 +672,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
                                                 color: Color(0xFF101213),
-                                                fontSize: 16.0,
+                                                fontSize: 16,
                                                 fontWeight: FontWeight.w500,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
@@ -690,7 +689,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 16.0),
+                                          0, 0, 0, 16),
                                       child: FFButtonWidget(
                                         onPressed: () async {
                                           GoRouter.of(context)
@@ -785,13 +784,13 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                         text: 'Create Account',
                                         options: FFButtonOptions(
                                           width: double.infinity,
-                                          height: 44.0,
+                                          height: 44,
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
+                                                  0, 0, 0, 0),
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
+                                                  0, 0, 0, 0),
                                           color: Colors.black,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
@@ -800,7 +799,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
                                                     color: Colors.white,
-                                                    fontSize: 16.0,
+                                                    fontSize: 16,
                                                     fontWeight: FontWeight.w500,
                                                     useGoogleFonts: GoogleFonts
                                                             .asMap()
@@ -809,19 +808,19 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                                     context)
                                                                 .titleSmallFamily),
                                                   ),
-                                          elevation: 3.0,
+                                          elevation: 3,
                                           borderSide: BorderSide(
                                             color: Colors.transparent,
-                                            width: 1.0,
+                                            width: 1,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(12.0),
+                                              BorderRadius.circular(12),
                                         ),
                                       ),
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 24.0),
+                                          16, 0, 16, 24),
                                       child: Text(
                                         'Or sign up with',
                                         textAlign: TextAlign.center,
@@ -830,7 +829,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                             .override(
                                               fontFamily: 'Plus Jakarta Sans',
                                               color: Color(0xFF57636C),
-                                              fontSize: 16.0,
+                                              fontSize: 16,
                                               fontWeight: FontWeight.w500,
                                               useGoogleFonts: GoogleFonts
                                                       .asMap()
@@ -843,7 +842,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 16.0),
+                                          0, 0, 0, 16),
                                       child: FFButtonWidget(
                                         onPressed: () async {
                                           GoRouter.of(context)
@@ -899,17 +898,17 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                         text: 'Continue with Google',
                                         icon: FaIcon(
                                           FontAwesomeIcons.google,
-                                          size: 20.0,
+                                          size: 20,
                                         ),
                                         options: FFButtonOptions(
                                           width: double.infinity,
-                                          height: 44.0,
+                                          height: 44,
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
+                                                  0, 0, 0, 0),
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
+                                                  0, 0, 0, 0),
                                           color: Colors.white,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
@@ -918,7 +917,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
                                                     color: Color(0xFF101213),
-                                                    fontSize: 16.0,
+                                                    fontSize: 16,
                                                     fontWeight: FontWeight.w500,
                                                     useGoogleFonts: GoogleFonts
                                                             .asMap()
@@ -927,13 +926,13 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                                     context)
                                                                 .titleSmallFamily),
                                                   ),
-                                          elevation: 0.0,
+                                          elevation: 0,
                                           borderSide: BorderSide(
                                             color: Color(0xFFE0E3E7),
-                                            width: 2.0,
+                                            width: 2,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(12.0),
+                                              BorderRadius.circular(12),
                                           hoverColor: Color(0xFFF1F4F8),
                                         ),
                                       ),
@@ -942,7 +941,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                     // You will have to add an action on this rich text to go to your login page.
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 12.0, 0.0, 12.0),
+                                          0, 12, 0, 12),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -968,7 +967,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color: Colors.black,
-                                                          fontSize: 14.0,
+                                                          fontSize: 14,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           useGoogleFonts: GoogleFonts
@@ -986,7 +985,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                   fontFamily:
                                                       'Plus Jakarta Sans',
                                                   color: Color(0xFF101213),
-                                                  fontSize: 14.0,
+                                                  fontSize: 14,
                                                   fontWeight: FontWeight.w500,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()

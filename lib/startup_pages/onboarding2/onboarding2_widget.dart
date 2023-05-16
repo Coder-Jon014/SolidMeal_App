@@ -11,6 +11,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+
 import 'onboarding2_model.dart';
 export 'onboarding2_model.dart';
 
@@ -43,15 +44,15 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
           curve: Curves.easeOut,
           delay: 0.ms,
           duration: 3200.ms,
-          begin: Offset(0.0, -80.0),
-          end: Offset(0.0, 0.0),
+          begin: Offset(0, -80),
+          end: Offset(0, 0),
         ),
         MoveEffect(
           curve: Curves.easeInOut,
           delay: 3200.ms,
           duration: 3200.ms,
-          begin: Offset(0.0, 0.0),
-          end: Offset(0.0, -80.0),
+          begin: Offset(0, 0),
+          end: Offset(0, -80),
         ),
       ],
     ),
@@ -63,22 +64,22 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
+          begin: 0,
+          end: 1,
         ),
         MoveEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 300.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
+          begin: Offset(0, 20),
+          end: Offset(0, 0),
         ),
         ScaleEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 300.ms,
           begin: Offset(0.9, 0.9),
-          end: Offset(1.0, 1.0),
+          end: Offset(1, 1),
         ),
       ],
     ),
@@ -90,22 +91,22 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
+          begin: 0,
+          end: 1,
         ),
         MoveEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 300.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
+          begin: Offset(0, 20),
+          end: Offset(0, 0),
         ),
         ScaleEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 300.ms,
           begin: Offset(0.9, 0.9),
-          end: Offset(1.0, 1.0),
+          end: Offset(1, 1),
         ),
       ],
     ),
@@ -117,22 +118,22 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
+          begin: 0,
+          end: 1,
         ),
         MoveEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 300.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
+          begin: Offset(0, 20),
+          end: Offset(0, 0),
         ),
         ScaleEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 300.ms,
           begin: Offset(0.9, 0.9),
-          end: Offset(1.0, 1.0),
+          end: Offset(1, 1),
         ),
       ],
     ),
@@ -144,22 +145,22 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
+          begin: 0,
+          end: 1,
         ),
         MoveEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 300.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
+          begin: Offset(0, 20),
+          end: Offset(0, 0),
         ),
         ScaleEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 300.ms,
           begin: Offset(0.9, 0.9),
-          end: Offset(1.0, 1.0),
+          end: Offset(1, 1),
         ),
       ],
     ),
@@ -194,7 +195,7 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
             ClipRRect(
               child: Container(
                 width: double.infinity,
-                height: 420.0,
+                height: 420,
                 decoration: BoxDecoration(
                   color: Colors.white,
                 ),
@@ -203,17 +204,16 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                   children: [
                     Container(
                       width: double.infinity,
-                      height: 600.0,
+                      height: 600,
                       decoration: BoxDecoration(
                         color: Colors.white,
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            30.0, 30.0, 30.0, 30.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(30, 30, 30, 30),
                         child: Lottie.network(
                           'https://assets5.lottiefiles.com/packages/lf20_ysas4vcp.json',
-                          width: 150.0,
-                          height: 13.0,
+                          width: 150,
+                          height: 13,
                           fit: BoxFit.cover,
                           animate: true,
                         ),
@@ -226,11 +226,11 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
             ),
             Expanded(
               child: Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0, 0),
                 child: Container(
                   width: double.infinity,
                   constraints: BoxConstraints(
-                    maxWidth: 670.0,
+                    maxWidth: 670,
                   ),
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -240,12 +240,12 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                     children: [
                       Container(
                         width: double.infinity,
-                        height: 230.0,
+                        height: 230,
                         child: Stack(
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 50.0),
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
                               child: PageView(
                                 controller: _model.pageViewController ??=
                                     PageController(initialPage: 0),
@@ -253,7 +253,7 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        48.0, 0.0, 48.0, 0.0),
+                                        48, 0, 48, 0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -267,7 +267,7 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
                                                 color: Color(0xFF101213),
-                                                fontSize: 36.0,
+                                                fontSize: 36,
                                                 fontWeight: FontWeight.bold,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
@@ -281,7 +281,7 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 16.0, 0.0, 0.0),
+                                                  0, 16, 0, 0),
                                           child: Text(
                                             'Discover Delicious Recipes Tailored to Your Tastes',
                                             textAlign: TextAlign.center,
@@ -291,7 +291,7 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                                                   fontFamily:
                                                       'Plus Jakarta Sans',
                                                   color: Color(0xFF57636C),
-                                                  fontSize: 16.0,
+                                                  fontSize: 16,
                                                   fontWeight: FontWeight.w500,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -308,7 +308,7 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        48.0, 0.0, 48.0, 0.0),
+                                        48, 0, 48, 0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -322,7 +322,7 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
                                                 color: Color(0xFF101213),
-                                                fontSize: 36.0,
+                                                fontSize: 36,
                                                 fontWeight: FontWeight.bold,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
@@ -336,7 +336,7 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 16.0, 0.0, 0.0),
+                                                  0, 16, 0, 0),
                                           child: Text(
                                             'Truly take control of your diet by customizing your nutritional intake',
                                             textAlign: TextAlign.center,
@@ -346,7 +346,7 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                                                   fontFamily:
                                                       'Plus Jakarta Sans',
                                                   color: Color(0xFF57636C),
-                                                  fontSize: 16.0,
+                                                  fontSize: 16,
                                                   fontWeight: FontWeight.w500,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -365,10 +365,10 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.0, 1.0),
+                              alignment: AlignmentDirectional(0, 1),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 10.0),
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                                 child:
                                     smooth_page_indicator.SmoothPageIndicator(
                                   controller: _model.pageViewController ??=
@@ -385,11 +385,11 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                                   },
                                   effect:
                                       smooth_page_indicator.ExpandingDotsEffect(
-                                    expansionFactor: 3.0,
-                                    spacing: 8.0,
-                                    radius: 16.0,
-                                    dotWidth: 8.0,
-                                    dotHeight: 8.0,
+                                    expansionFactor: 3,
+                                    spacing: 8,
+                                    radius: 16,
+                                    dotWidth: 8,
+                                    dotHeight: 8,
                                     dotColor: Color(0xFFE0E3E7),
                                     activeDotColor: Color(0xFF101213),
                                     paintStyle: PaintingStyle.fill,
@@ -401,8 +401,7 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 12.0, 16.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             context.pushNamed('GetToKnow1');
@@ -410,36 +409,34 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                           text: 'Next',
                           options: FFButtonOptions(
                             width: double.infinity,
-                            height: 60.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
+                            height: 60,
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            iconPadding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
                                   fontFamily: 'Plus Jakarta Sans',
                                   color: Colors.white,
-                                  fontSize: 18.0,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .titleMediumFamily),
                                 ),
-                            elevation: 4.0,
+                            elevation: 4,
                             borderSide: BorderSide(
                               color: Colors.transparent,
-                              width: 1.0,
+                              width: 1,
                             ),
-                            borderRadius: BorderRadius.circular(50.0),
+                            borderRadius: BorderRadius.circular(50),
                             hoverColor: Color(0xFF101213),
                           ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 12.0, 16.0, 44.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 44),
                         child: FFButtonWidget(
                           onPressed: () async {
                             context.pushNamed('GetToKnow1');
@@ -447,29 +444,28 @@ class _Onboarding2WidgetState extends State<Onboarding2Widget>
                           text: 'Skip',
                           options: FFButtonOptions(
                             width: double.infinity,
-                            height: 60.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
+                            height: 60,
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            iconPadding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                             color: Colors.white,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleLarge
                                 .override(
                                   fontFamily: 'Urbanist',
                                   color: Color(0xFF101213),
-                                  fontSize: 18.0,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .titleLargeFamily),
                                 ),
-                            elevation: 0.0,
+                            elevation: 0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
-                              width: 1.0,
+                              width: 1,
                             ),
-                            borderRadius: BorderRadius.circular(50.0),
+                            borderRadius: BorderRadius.circular(50),
                             hoverColor: Color(0xFFE0E3E7),
                           ),
                         ),

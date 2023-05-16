@@ -9,6 +9,36 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
+class SimilarRecipesCall {
+  static Future<ApiCallResponse> call({
+    int? id,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'SimilarRecipes',
+      apiUrl:
+          'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id ?? 156992}/similar',
+      callType: ApiCallType.GET,
+      headers: {
+        'X-RapidAPI-Host':
+            'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+        'X-RapidAPI-Key': '92d155dd53msh7f93ade944b4736p19d9f0jsne5b6faf7387d',
+      },
+      params: {
+        'id': id,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$[:].id''',
+        true,
+      );
+}
 class RecipesCall {
   static Future<ApiCallResponse> call({
     double? maxSaturatedFat = 10,
@@ -16,6 +46,7 @@ class RecipesCall {
     double? maxSugar = 1000,
     double? maxSodium = 1000,
     String? intolerances = 'tree nut',
+    String? diet = 'none',
     double? maxProtein = 1000,
     double? maxCarbs = 2000,
     double? maxFat = 1000,
@@ -141,7 +172,7 @@ class RecipesCall {
 
 class RecipeInfoCall {
   static Future<ApiCallResponse> call({
-    int? ids,
+    String? ids,
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'RecipeInfo',

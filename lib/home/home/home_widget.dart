@@ -840,31 +840,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                             0.0, 12.0, 0.0, 12.0),
                         child: FutureBuilder<ApiCallResponse>(
                           future: RecipesCall.call(
-                            maxSaturatedFat:
-                                homeUserNutrientContentRecord!.maxSaturatedFat,
-                            maxSugar: homeUserNutrientContentRecord!.maxSugar,
-                            maxSodium: homeUserNutrientContentRecord!.maxSodium,
                             query: _model.queryVariable,
-                            number: 1,
-                            diet: homeUserNutrientContentRecord!.diets!.isNotEmpty ? homeUserNutrientContentRecord!.diets!.first : null,
-                            intolerances: functions.stringListJoiner(
-                                homeUserNutrientContentRecord!.intolerances!
-                                    .toList()),
-                            maxPotassium:
-                                homeUserNutrientContentRecord!.maxPotassium,
-                            maxCarbs: homeUserNutrientContentRecord!.maxCarbs,
-                            maxProtein:
-                                homeUserNutrientContentRecord!.maxProtein,
-                            maxFat: homeUserNutrientContentRecord!.maxFat,
-                            maxCalcium:
-                                homeUserNutrientContentRecord!.maxCalcium,
-                            maxCholesterol:
-                                homeUserNutrientContentRecord!.maxCholesterol,
-                            maxFiber: homeUserNutrientContentRecord!.maxFiber,
-                            maxCalories:
-                                homeUserNutrientContentRecord!.maxCalories,
-                            maxMagnesium:
-                                homeUserNutrientContentRecord!.maxMagnesium,
+                            number: 20,
+                            diet: homeUserNutrientContentRecord!
+                                    .diets!.isNotEmpty
+                                ? homeUserNutrientContentRecord!.diets!.first
+                                : null,
+                            sort: 'random',
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
@@ -884,43 +866,28 @@ class _HomeWidgetState extends State<HomeWidget> {
                             final recipesJson = wrapRecipesResponse
                                 .jsonBody; // get the JSON body of the response
                             // Convert the JSON to a list of maps (recipes)
-                            List<Map<String, dynamic>> recipes =
-                                List<Map<String, dynamic>>.from(
-                                    recipesJson["results"]);
+                            final recipes = recipesJson['results']
+                                .cast<Map<String, dynamic>>();
 
-                            // Apply your custom function to the recipes
-                            recipes = functions.knnAlgorithmIntegrator(
-                                homeUserNutrientContentRecord!.maxCarbs ?? 100,
-                                homeUserNutrientContentRecord!.maxProtein ??
-                                    100,
-                                homeUserNutrientContentRecord!.maxCalories ??
-                                    2000,
-                                homeUserNutrientContentRecord!.maxFat ?? 100,
-                                homeUserNutrientContentRecord!.maxCalcium ??
-                                    100,
-                                homeUserNutrientContentRecord!.maxCholesterol ??
-                                    100,
-                                homeUserNutrientContentRecord!
-                                        .maxSaturatedFat ??
-                                    100,
-                                homeUserNutrientContentRecord!.maxPotassium ??
-                                    100,
-                                homeUserNutrientContentRecord!.maxSugar ?? 100,
-                                homeUserNutrientContentRecord!.maxSodium ?? 100,
-                                homeUserNutrientContentRecord!.maxFiber ?? 100,
-                                homeUserNutrientContentRecord!.maxMagnesium ??
-                                    100,
-                                recipes);
-
-                            // Convert the list of recipes back to JSON
-                            Map<String, dynamic> newRecipesJson = {
-                              "results": recipes
-                            };
+                            // call the knn algorithm integrator on the recipes
+                            final knnRecipes = functions.knnAlgorithmIntegrator(
+                              homeUserNutrientContentRecord!.maxCarbs!,
+                              homeUserNutrientContentRecord!.maxProtein!,
+                              homeUserNutrientContentRecord!.maxCalories!,
+                              homeUserNutrientContentRecord!.maxFat!,
+                              homeUserNutrientContentRecord!.maxCalcium!,
+                              homeUserNutrientContentRecord!.maxCholesterol!,
+                              homeUserNutrientContentRecord!.maxSaturatedFat!,
+                              homeUserNutrientContentRecord!.maxPotassium!,
+                              homeUserNutrientContentRecord!.maxSugar!,
+                              homeUserNutrientContentRecord!.maxSodium!,
+                              homeUserNutrientContentRecord!.maxFiber!,
+                              homeUserNutrientContentRecord!.maxMagnesium!,
+                              recipes,
+                            );
 
                             return Builder(
                               builder: (context) {
-                                final recipe =
-                                    newRecipesJson['results'] as List<dynamic>;
                                 return Wrap(
                                   spacing: 8.0,
                                   runSpacing: 8.0,
@@ -930,9 +897,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   runAlignment: WrapAlignment.start,
                                   verticalDirection: VerticalDirection.down,
                                   clipBehavior: Clip.none,
-                                  children: List.generate(recipe.length,
+                                  children: List.generate(knnRecipes.length,
                                       (recipeIndex) {
-                                    final recipeItem = recipe[recipeIndex];
+                                    final recipeItem = knnRecipes[recipeIndex];
                                     return Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 10.0),
@@ -1185,31 +1152,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                             0.0, 12.0, 0.0, 12.0),
                         child: FutureBuilder<ApiCallResponse>(
                           future: RecipesCall.call(
-                            maxSaturatedFat:
-                                homeUserNutrientContentRecord!.maxSaturatedFat,
-                            maxSugar: homeUserNutrientContentRecord!.maxSugar,
-                            maxSodium: homeUserNutrientContentRecord!.maxSodium,
                             query: _model.queryVariable,
-                            number: 5,
-                            diet: homeUserNutrientContentRecord!.diets!.isNotEmpty ? homeUserNutrientContentRecord!.diets!.first : null,
-                            intolerances: functions.stringListJoiner(
-                                homeUserNutrientContentRecord!.intolerances!
-                                    .toList()),
-                            maxPotassium:
-                                homeUserNutrientContentRecord!.maxPotassium,
-                            maxCarbs: homeUserNutrientContentRecord!.maxCarbs,
-                            maxProtein:
-                                homeUserNutrientContentRecord!.maxProtein,
-                            maxFat: homeUserNutrientContentRecord!.maxFat,
-                            maxCalcium:
-                                homeUserNutrientContentRecord!.maxCalcium,
-                            maxCholesterol:
-                                homeUserNutrientContentRecord!.maxCholesterol,
-                            maxFiber: homeUserNutrientContentRecord!.maxFiber,
-                            maxCalories:
-                                homeUserNutrientContentRecord!.maxCalories,
-                            maxMagnesium:
-                                homeUserNutrientContentRecord!.maxMagnesium,
+                            number: 1,
+                            diet: homeUserNutrientContentRecord!
+                                    .diets!.isNotEmpty
+                                ? homeUserNutrientContentRecord!.diets!.first
+                                : null,
                             sort: 'random',
                           ),
                           builder: (context, snapshot) {
@@ -1259,14 +1207,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 recipes);
 
                             // Convert the list of recipes back to JSON
-                            Map<String, dynamic> newRecipesJson = {
-                              "results": recipes
-                            };
+                            // Map<String, dynamic> newRecipesJson = {
+                            //   "results": recipes
+                            // };
 
                             return Builder(
                               builder: (context) {
-                                final recipe =
-                                    newRecipesJson['results'] as List<dynamic>;
+                                final recipe = recipes;
                                 return Wrap(
                                   spacing: 8.0,
                                   runSpacing: 8.0,

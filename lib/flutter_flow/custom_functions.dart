@@ -71,8 +71,7 @@ List<String>? nutrientUnitAdder() {
 
   return nutrientUnits;
 }
-
-dynamic knnAlgorithmIntegrator(
+List<Map<String, dynamic>> knnAlgorithmIntegrator(
   double carbohydrates,
   double protein,
   double calories,
@@ -87,24 +86,67 @@ dynamic knnAlgorithmIntegrator(
   double magnesium,
   List<Map<String, dynamic>> recipes,
 ) {
+  // Create a list of the recipes
+  final List<Map<String, dynamic>> recipesList = [];
+  
+  // Loop through the recipes
+  for (final recipe in recipes) {
+    // Get the nutrients of the recipe
+    final nutrients = recipe['nutrition']['nutrients'].cast<Map<String, dynamic>>();
+    
+    // Create a map of the recipe
+    final Map<String, dynamic> recipeMap = {
+      'id': recipe['id'],
+      'title': recipe['title'],
+      'image': recipe['image'],
+    };
+
+    // Loop through the nutrients and assign them based on their name
+    for (final nutrient in nutrients) {
+      final nutrientName = nutrient['name'].toLowerCase();
+      recipeMap[nutrientName] = nutrient['amount'];
+    }
+    
+    // Add the recipe to the list
+    recipesList.add(recipeMap);
+  }
+
+  // Define the target nutrition
   Map<String, double> targetNutrition = {
-    'Carbohydrates': carbohydrates,
-    'Protein': protein,
-    'Calories': calories,
-    'Fat': fat,
-    'Calcium': calcium,
-    'Cholesterol': cholesterol,
-    'Saturated Fat': saturatedFat,
-    'Potassium': potassium,
-    'Sugar': sugar,
-    'Sodium': sodium,
-    'Fiber': fiber,
-    'Magnesium': magnesium,
+    'carbohydrates': carbohydrates,
+    'protein': protein,
+    'calories': calories,
+    'fat': fat,
+    'calcium': calcium,
+    'cholesterol': cholesterol,
+    'saturated fat': saturatedFat,
+    'potassium': potassium,
+    'sugar': sugar,
+    'sodium': sodium,
+    'fiber': fiber,
+    'magnesium': magnesium,
   };
 
-  recipes.sort((a, b) => _compareRecipes(a, b, targetNutrition));
-  
-  return recipes;
+  // Filter the recipes based on the target nutrition
+  List<Map<String, dynamic>> filteredRecipes = recipesList.where((recipe) => _isRecipeValid(recipe, targetNutrition)).toList();
+
+  // Sort the recipes based on their distance to the target nutrition
+  filteredRecipes.sort((a, b) => _compareRecipes(a, b, targetNutrition));
+
+  return filteredRecipes;
+}
+
+bool _isRecipeValid(Map<String, dynamic> recipe, Map<String, double> target) {
+  for (String nutrient in target.keys) {
+    double recipeValue = recipe[nutrient] ?? 0.0;
+    double targetValue = target[nutrient] ?? 0.0;
+    
+    if (recipeValue > targetValue) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 int _compareRecipes(Map<String, dynamic> a, Map<String, dynamic> b, Map<String, double> target) {
@@ -116,7 +158,7 @@ int _compareRecipes(Map<String, dynamic> a, Map<String, dynamic> b, Map<String, 
 
 double _calculateDistance(Map<String, dynamic> recipe, Map<String, double> target) {
   double distance = 0.0;
-  
+
   for (String nutrient in target.keys) {
     double recipeValue = recipe[nutrient] ?? 0.0;
     double targetValue = target[nutrient] ?? 0.0;
@@ -126,6 +168,8 @@ double _calculateDistance(Map<String, dynamic> recipe, Map<String, double> targe
   
   return math.sqrt(distance);
 }
+
+
 
 String? integerListJoiner(List<int>? integerList) {
   if (integerList == null || integerList.isEmpty) {

@@ -227,24 +227,10 @@ class _MainCourseWidgetState extends State<MainCourseWidget> {
                           'chicken',
                         ),
                         number: 20,
-                        diet: columnUserNutrientContentRecord!.diets!.isNotEmpty ? columnUserNutrientContentRecord!.diets!.first : null,
-                        intolerances: functions.stringListJoiner(
-                            columnUserNutrientContentRecord!.intolerances!
-                                .toList()),
-                        maxPotassium:
-                            columnUserNutrientContentRecord!.maxPotassium,
-                        maxCarbs: columnUserNutrientContentRecord!.maxCarbs,
-                        maxProtein: columnUserNutrientContentRecord!.maxProtein,
-                        maxFat: columnUserNutrientContentRecord!.maxFat,
-                        maxCalcium: columnUserNutrientContentRecord!.maxCalcium,
-                        maxCholesterol:
-                            columnUserNutrientContentRecord!.maxCholesterol,
-                        maxFiber: columnUserNutrientContentRecord!.maxFiber,
-                        maxCalories:
-                            columnUserNutrientContentRecord!.maxCalories,
-                        maxMagnesium:
-                            columnUserNutrientContentRecord!.maxMagnesium,
-                        offset: 1,
+                        diet: columnUserNutrientContentRecord!.diets!.isNotEmpty
+                            ? columnUserNutrientContentRecord!.diets!.first
+                            : null,
+                        offset: 10,
                         type: widget.type,
                       ),
                       builder: (context, snapshot) {
@@ -262,46 +248,41 @@ class _MainCourseWidgetState extends State<MainCourseWidget> {
                           );
                         }
                         final wrapRecipesResponse = snapshot.data!;
-                       final recipesJson = wrapRecipesResponse
-                                .jsonBody; // get the JSON body of the response
-                            // Convert the JSON to a list of maps (recipes)
-                            List<Map<String, dynamic>> recipes =
-                                List<Map<String, dynamic>>.from(
-                                    recipesJson["results"]);
+                        final recipesJson = wrapRecipesResponse.jsonBody;
+                        List<Map<String, dynamic>> recipes =
+                            List<Map<String, dynamic>>.from(
+                                recipesJson["results"]);
 
-                            // Apply your custom function to the recipes
-                            recipes = functions.knnAlgorithmIntegrator(
-                                columnUserNutrientContentRecord!.maxCarbs ?? 100,
-                                columnUserNutrientContentRecord!.maxProtein ??
-                                    100,
-                                columnUserNutrientContentRecord!.maxCalories ??
-                                    2000,
-                                columnUserNutrientContentRecord!.maxFat ?? 100,
-                                columnUserNutrientContentRecord!.maxCalcium ??
-                                    100,
-                                columnUserNutrientContentRecord!.maxCholesterol ??
-                                    100,
-                                columnUserNutrientContentRecord!
-                                        .maxSaturatedFat ??
-                                    100,
-                                columnUserNutrientContentRecord!.maxPotassium ??
-                                    100,
-                                columnUserNutrientContentRecord!.maxSugar ?? 100,
-                                columnUserNutrientContentRecord!.maxSodium ?? 100,
-                                columnUserNutrientContentRecord!.maxFiber ?? 100,
-                                columnUserNutrientContentRecord!.maxMagnesium ??
-                                    100,
-                                recipes);
+// Apply your custom function to the recipes
+                        recipes = functions.knnAlgorithmIntegrator(
+                            columnUserNutrientContentRecord!.maxCarbs ?? 100,
+                            columnUserNutrientContentRecord!.maxProtein ?? 100,
+                            columnUserNutrientContentRecord!.maxCalories ??
+                                2000,
+                            columnUserNutrientContentRecord!.maxFat ?? 100,
+                            columnUserNutrientContentRecord!.maxCalcium ?? 100,
+                            columnUserNutrientContentRecord!.maxCholesterol ??
+                                100,
+                            columnUserNutrientContentRecord!.maxSaturatedFat ??
+                                100,
+                            columnUserNutrientContentRecord!.maxPotassium ??
+                                100,
+                            columnUserNutrientContentRecord!.maxSugar ?? 100,
+                            columnUserNutrientContentRecord!.maxSodium ?? 100,
+                            columnUserNutrientContentRecord!.maxFiber ?? 100,
+                            columnUserNutrientContentRecord!.maxMagnesium ??
+                                100,
+                            recipes);
 
-                            // Convert the list of recipes back to JSON
-                            Map<String, dynamic> newRecipesJson = {
-                              "results": recipes
-                            };
+// Convert the list of recipes back to JSON
+                        Map<String, dynamic> newRecipesJson = {
+                          "results": recipes
+                        };
 
-                            return Builder(
-                              builder: (context) {
-                                final recipes =
-                                    newRecipesJson['results'] as List<dynamic>;
+                        return Builder(
+                          builder: (context) {
+                            final recipes =
+                                newRecipesJson['results'] as List<dynamic>;
                             return Wrap(
                               spacing: 8.0,
                               runSpacing: 8.0,

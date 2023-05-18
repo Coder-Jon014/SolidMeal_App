@@ -247,15 +247,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => RecipeNutrientContentPageDatabaseWidget(
             id: params.getParam('id', ParamType.int),
           ),
-        ),
-        FFRoute(
-          name: 'NoteMaker',
-          path: '/noteMaker',
-          builder: (context, params) => NoteMakerWidget(
-            recipeRef: params.getParam(
-                'recipeRef', ParamType.DocumentReference, false, ['recipes']),
-          ),
         )
+        // FFRoute(
+        //   name: 'NoteMaker',
+        //   path: '/noteMaker',
+        //   builder: (context, params) => NoteMakerWidget(
+        //     recipeRef: params.getParam(
+        //         'recipeRef', ParamType.DocumentReference, false, ['recipes']),
+        //   ),
+        // )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,
     );

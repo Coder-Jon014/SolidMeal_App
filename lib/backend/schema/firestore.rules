@@ -69,11 +69,23 @@ service cloud.firestore {
     }
 
 
-    match /notesForRecipes/{document} {
+    match /intoleranceList/{document} {
       allow create: if true;
       allow read: if true;
-      allow write: if false;
-      allow delete: if false;
+      allow write: if true;
+      allow delete: if true;
     }
+
+    match /users/{parent}/recipeUserNotes/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/recipeUserNotes/{document} {
+      allow read: if true;
+    }
+
   }
 }

@@ -66,6 +66,8 @@ abstract class UserNutrientContentRecord
 
   BuiltList<String>? get diets;
 
+  BuiltList<String>? get intolerancesKeyWords;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -100,7 +102,8 @@ abstract class UserNutrientContentRecord
         ..minMagnesium = 0.0
         ..nutrientUnit = ListBuilder()
         ..intolerances = ListBuilder()
-        ..diets = ListBuilder();
+        ..diets = ListBuilder()
+        ..intolerancesKeyWords = ListBuilder();
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
       parent != null
@@ -186,7 +189,8 @@ Map<String, dynamic> createUserNutrientContentRecordData({
         ..minMagnesium = minMagnesium
         ..nutrientUnit = null
         ..intolerances = null
-        ..diets = null,
+        ..diets = null
+        ..intolerancesKeyWords = null,
     ),
   );
 

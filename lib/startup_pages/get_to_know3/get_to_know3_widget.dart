@@ -280,11 +280,10 @@ class _GetToKnow3WidgetState extends State<GetToKnow3Widget>
                                                       .fromSTEB(
                                                           0.0, 12.0, 0.0, 0.0),
                                                   child: StreamBuilder<
-                                                      List<IntolerancesRecord>>(
+                                                      List<
+                                                          IntoleranceListRecord>>(
                                                     stream:
-                                                        queryIntolerancesRecord(
-                                                      singleRecord: true,
-                                                    ),
+                                                        queryIntoleranceListRecord(),
                                                     builder:
                                                         (context, snapshot) {
                                                       // Customize what your widget looks like when it's loading.
@@ -301,85 +300,67 @@ class _GetToKnow3WidgetState extends State<GetToKnow3Widget>
                                                           ),
                                                         );
                                                       }
-                                                      List<IntolerancesRecord>
-                                                          listViewIntolerancesRecordList =
+                                                      List<IntoleranceListRecord>
+                                                          listViewIntoleranceListRecordList =
                                                           snapshot.data!;
-                                                      // Return an empty Container when the item does not exist.
-                                                      if (snapshot
-                                                          .data!.isEmpty) {
-                                                        return Container();
-                                                      }
-                                                      final listViewIntolerancesRecord =
-                                                          listViewIntolerancesRecordList
-                                                                  .isNotEmpty
-                                                              ? listViewIntolerancesRecordList
-                                                                  .first
-                                                              : null;
-                                                      return Builder(
-                                                        builder: (context) {
-                                                          final intolerance =
-                                                              listViewIntolerancesRecord!
-                                                                  .intolerances!
-                                                                  .toList();
-                                                          return ListView
-                                                              .builder(
-                                                            padding:
-                                                                EdgeInsets.zero,
-                                                            scrollDirection:
-                                                                Axis.vertical,
-                                                            itemCount:
-                                                                intolerance
-                                                                    .length,
-                                                            itemBuilder: (context,
-                                                                intoleranceIndex) {
-                                                              final intoleranceItem =
-                                                                  intolerance[
-                                                                      intoleranceIndex];
-                                                              return Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Theme(
-                                                                    data:
-                                                                        ThemeData(
-                                                                      checkboxTheme:
-                                                                          CheckboxThemeData(
-                                                                        shape:
-                                                                            RoundedRectangleBorder(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(0.0),
-                                                                        ),
-                                                                      ),
-                                                                      unselectedWidgetColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .accent2,
-                                                                    ),
-                                                                    child:
-                                                                        Checkbox(
-                                                                      value: _model
-                                                                              .checkboxValueMap[intoleranceItem] ??=
-                                                                          false,
-                                                                      onChanged:
-                                                                          (newValue) async {
-                                                                        setState(() =>
-                                                                            _model.checkboxValueMap[intoleranceItem] =
-                                                                                newValue!);
-                                                                      },
-                                                                      activeColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primary,
+                                                      return ListView.builder(
+                                                        padding:
+                                                            EdgeInsets.zero,
+                                                        scrollDirection:
+                                                            Axis.vertical,
+                                                        itemCount:
+                                                            listViewIntoleranceListRecordList
+                                                                .length,
+                                                        itemBuilder: (context,
+                                                            listViewIndex) {
+                                                          final listViewIntoleranceListRecord =
+                                                              listViewIntoleranceListRecordList[
+                                                                  listViewIndex];
+                                                          return Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Theme(
+                                                                data: ThemeData(
+                                                                  checkboxTheme:
+                                                                      CheckboxThemeData(
+                                                                    shape:
+                                                                        RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              0.0),
                                                                     ),
                                                                   ),
-                                                                  Text(
-                                                                    intoleranceItem,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium,
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
+                                                                  unselectedWidgetColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent2,
+                                                                ),
+                                                                child: Checkbox(
+                                                                  value: _model
+                                                                          .checkboxValueMap[
+                                                                      listViewIntoleranceListRecord] ??= false,
+                                                                  onChanged:
+                                                                      (newValue) async {
+                                                                    setState(() =>
+                                                                        _model.checkboxValueMap[listViewIntoleranceListRecord] =
+                                                                            newValue!);
+                                                                  },
+                                                                  activeColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                listViewIntoleranceListRecord
+                                                                    .intolerance!,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium,
+                                                              ),
+                                                            ],
                                                           );
                                                         },
                                                       );
@@ -412,7 +393,11 @@ class _GetToKnow3WidgetState extends State<GetToKnow3Widget>
                                                       final userNutrientContentUpdateData2 =
                                                           {
                                                         'intolerances': _model
-                                                            .checkboxCheckedItems,
+                                                            .checkboxCheckedItems
+                                                            .map((e) =>
+                                                                e.intolerance)
+                                                            .withoutNulls
+                                                            .toList(),
                                                       };
                                                       await columnUserNutrientContentRecord!
                                                           .reference
@@ -421,7 +406,7 @@ class _GetToKnow3WidgetState extends State<GetToKnow3Widget>
                                                     }
 
                                                     context.pushNamed(
-                                                        'onboarding3');
+                                                        'GetToKnow2');
                                                   },
                                                   text: 'Next',
                                                   options: FFButtonOptions(

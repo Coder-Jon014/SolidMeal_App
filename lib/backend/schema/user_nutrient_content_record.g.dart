@@ -217,6 +217,14 @@ class _$UserNutrientContentRecordSerializer
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
+    value = object.intolerancesKeyWords;
+    if (value != null) {
+      result
+        ..add('intolerancesKeyWords')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -354,6 +362,12 @@ class _$UserNutrientContentRecordSerializer
                       BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
+        case 'intolerancesKeyWords':
+          result.intolerancesKeyWords.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -423,6 +437,8 @@ class _$UserNutrientContentRecord extends UserNutrientContentRecord {
   @override
   final BuiltList<String>? diets;
   @override
+  final BuiltList<String>? intolerancesKeyWords;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UserNutrientContentRecord(
@@ -457,6 +473,7 @@ class _$UserNutrientContentRecord extends UserNutrientContentRecord {
       this.nutrientUnit,
       this.intolerances,
       this.diets,
+      this.intolerancesKeyWords,
       this.ffRef})
       : super._();
 
@@ -500,6 +517,7 @@ class _$UserNutrientContentRecord extends UserNutrientContentRecord {
         nutrientUnit == other.nutrientUnit &&
         intolerances == other.intolerances &&
         diets == other.diets &&
+        intolerancesKeyWords == other.intolerancesKeyWords &&
         ffRef == other.ffRef;
   }
 
@@ -533,6 +551,7 @@ class _$UserNutrientContentRecord extends UserNutrientContentRecord {
     _$hash = $jc(_$hash, nutrientUnit.hashCode);
     _$hash = $jc(_$hash, intolerances.hashCode);
     _$hash = $jc(_$hash, diets.hashCode);
+    _$hash = $jc(_$hash, intolerancesKeyWords.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -568,6 +587,7 @@ class _$UserNutrientContentRecord extends UserNutrientContentRecord {
           ..add('nutrientUnit', nutrientUnit)
           ..add('intolerances', intolerances)
           ..add('diets', diets)
+          ..add('intolerancesKeyWords', intolerancesKeyWords)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -694,6 +714,12 @@ class UserNutrientContentRecordBuilder
   ListBuilder<String> get diets => _$this._diets ??= new ListBuilder<String>();
   set diets(ListBuilder<String>? diets) => _$this._diets = diets;
 
+  ListBuilder<String>? _intolerancesKeyWords;
+  ListBuilder<String> get intolerancesKeyWords =>
+      _$this._intolerancesKeyWords ??= new ListBuilder<String>();
+  set intolerancesKeyWords(ListBuilder<String>? intolerancesKeyWords) =>
+      _$this._intolerancesKeyWords = intolerancesKeyWords;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -732,6 +758,7 @@ class UserNutrientContentRecordBuilder
       _nutrientUnit = $v.nutrientUnit?.toBuilder();
       _intolerances = $v.intolerances?.toBuilder();
       _diets = $v.diets?.toBuilder();
+      _intolerancesKeyWords = $v.intolerancesKeyWords?.toBuilder();
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -784,6 +811,7 @@ class UserNutrientContentRecordBuilder
               nutrientUnit: _nutrientUnit?.build(),
               intolerances: _intolerances?.build(),
               diets: _diets?.build(),
+              intolerancesKeyWords: _intolerancesKeyWords?.build(),
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;
@@ -794,6 +822,8 @@ class UserNutrientContentRecordBuilder
         _intolerances?.build();
         _$failedField = 'diets';
         _diets?.build();
+        _$failedField = 'intolerancesKeyWords';
+        _intolerancesKeyWords?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'UserNutrientContentRecord', _$failedField, e.toString());

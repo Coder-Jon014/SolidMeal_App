@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'intolerances_page_model.dart';
 export 'intolerances_page_model.dart';
 
@@ -52,13 +53,13 @@ class _IntolerancesPageWidgetState extends State<IntolerancesPageWidget> {
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
+            borderRadius: 30,
+            borderWidth: 1,
+            buttonSize: 60,
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 30.0,
+              size: 30,
             ),
             onPressed: () async {
               context.pop();
@@ -69,14 +70,14 @@ class _IntolerancesPageWidgetState extends State<IntolerancesPageWidget> {
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                   color: Colors.white,
-                  fontSize: 22.0,
+                  fontSize: 22,
                   useGoogleFonts: GoogleFonts.asMap().containsKey(
                       FlutterFlowTheme.of(context).headlineMediumFamily),
                 ),
           ),
           actions: [],
           centerTitle: false,
-          elevation: 2.0,
+          elevation: 2,
         ),
         body: SafeArea(
           child: Column(
@@ -84,14 +85,13 @@ class _IntolerancesPageWidgetState extends State<IntolerancesPageWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                 child: Container(
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
                   child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
                     child: Text(
                       'Choose the intolerances that fits you:',
                       style: FlutterFlowTheme.of(context).bodyMedium,
@@ -103,8 +103,7 @@ class _IntolerancesPageWidgetState extends State<IntolerancesPageWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: StreamBuilder<List<IntolerancesRecord>>(
                       stream: queryIntolerancesRecord(
                         singleRecord: true,
@@ -114,11 +113,11 @@ class _IntolerancesPageWidgetState extends State<IntolerancesPageWidget> {
                         if (!snapshot.hasData) {
                           return Center(
                             child: SizedBox(
-                              width: 150.0,
-                              height: 150.0,
+                              width: 150,
+                              height: 150,
                               child: SpinKitPulse(
                                 color: Color(0xFF4B39EF),
-                                size: 150.0,
+                                size: 150,
                               ),
                             ),
                           );
@@ -157,11 +156,11 @@ class _IntolerancesPageWidgetState extends State<IntolerancesPageWidget> {
                                     if (!snapshot.hasData) {
                                       return Center(
                                         child: SizedBox(
-                                          width: 150.0,
-                                          height: 150.0,
+                                          width: 150,
+                                          height: 150,
                                           child: SpinKitPulse(
                                             color: Color(0xFF4B39EF),
-                                            size: 150.0,
+                                            size: 150,
                                           ),
                                         ),
                                       );
@@ -180,11 +179,10 @@ class _IntolerancesPageWidgetState extends State<IntolerancesPageWidget> {
                                                 .first
                                             : null;
                                     return Container(
-                                      height: 68.0,
+                                      height: 68,
                                       decoration: BoxDecoration(
                                         color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
+                                        borderRadius: BorderRadius.circular(0),
                                         border: Border.all(
                                           color: Colors.black,
                                           width: 0.5,
@@ -192,16 +190,55 @@ class _IntolerancesPageWidgetState extends State<IntolerancesPageWidget> {
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            15.0, 0.0, 15.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              intolerancesItem,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                            15, 0, 15, 0),
+                                        child: StreamBuilder<
+                                            List<IntoleranceListRecord>>(
+                                          stream: queryIntoleranceListRecord(
+                                            queryBuilder:
+                                                (intoleranceListRecord) =>
+                                                    intoleranceListRecord.where(
+                                                        'intolerance',
+                                                        isEqualTo:
+                                                            intolerancesItem),
+                                            singleRecord: true,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 150,
+                                                  height: 150,
+                                                  child: SpinKitPulse(
+                                                    color: Color(0xFF4B39EF),
+                                                    size: 150,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            List<IntoleranceListRecord>
+                                                rowIntoleranceListRecordList =
+                                                snapshot.data!;
+                                            // Return an empty Container when the item does not exist.
+                                            if (snapshot.data!.isEmpty) {
+                                              return Container();
+                                            }
+                                            final rowIntoleranceListRecord =
+                                                rowIntoleranceListRecordList
+                                                        .isNotEmpty
+                                                    ? rowIntoleranceListRecordList
+                                                        .first
+                                                    : null;
+                                            return Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  intolerancesItem,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily:
@@ -218,64 +255,94 @@ class _IntolerancesPageWidgetState extends State<IntolerancesPageWidget> {
                                                                         context)
                                                                     .bodyMediumFamily),
                                                       ),
-                                            ),
-                                            Theme(
-                                              data: ThemeData(
-                                                checkboxTheme:
-                                                    CheckboxThemeData(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            0.0),
+                                                ),
+                                                Theme(
+                                                  data: ThemeData(
+                                                    checkboxTheme:
+                                                        CheckboxThemeData(
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0),
+                                                      ),
+                                                    ),
+                                                    unselectedWidgetColor:
+                                                        Color(0xFF736E6E),
+                                                  ),
+                                                  child: Checkbox(
+                                                    value: _model
+                                                                .checkboxValueMap[
+                                                            intolerancesItem] ??=
+                                                        containerUserNutrientContentRecord!
+                                                            .intolerances!
+                                                            .toList()
+                                                            .contains(
+                                                                intolerancesItem),
+                                                    onChanged:
+                                                        (newValue) async {
+                                                      setState(() => _model
+                                                                  .checkboxValueMap[
+                                                              intolerancesItem] =
+                                                          newValue!);
+                                                      if (newValue!) {
+                                                        final userNutrientContentUpdateData1 =
+                                                            {
+                                                          'intolerances':
+                                                              FieldValue
+                                                                  .arrayUnion([
+                                                            intolerancesItem
+                                                          ]),
+                                                        };
+                                                        await containerUserNutrientContentRecord!
+                                                            .reference
+                                                            .update(
+                                                                userNutrientContentUpdateData1);
+
+                                                        final userNutrientContentUpdateData2 =
+                                                            {
+                                                          'intolerancesKeyWords':
+                                                              rowIntoleranceListRecord!
+                                                                  .intoleranceKeyWords!
+                                                                  .toList(),
+                                                        };
+                                                        await containerUserNutrientContentRecord!
+                                                            .reference
+                                                            .update(
+                                                                userNutrientContentUpdateData2);
+                                                      } else {
+                                                        final userNutrientContentUpdateData1 =
+                                                            {
+                                                          'intolerances':
+                                                              FieldValue
+                                                                  .arrayRemove([
+                                                            intolerancesItem
+                                                          ]),
+                                                        };
+                                                        await containerUserNutrientContentRecord!
+                                                            .reference
+                                                            .update(
+                                                                userNutrientContentUpdateData1);
+
+                                                        final userNutrientContentUpdateData2 =
+                                                            {
+                                                          'intolerancesKeyWords':
+                                                              FieldValue
+                                                                  .delete(),
+                                                        };
+                                                        await containerUserNutrientContentRecord!
+                                                            .reference
+                                                            .update(
+                                                                userNutrientContentUpdateData2);
+                                                      }
+                                                    },
+                                                    activeColor: Colors.black,
+                                                    checkColor: Colors.white,
                                                   ),
                                                 ),
-                                                unselectedWidgetColor:
-                                                    Color(0xFF736E6E),
-                                              ),
-                                              child: Checkbox(
-                                                value: _model.checkboxValueMap[
-                                                        intolerancesItem] ??=
-                                                    containerUserNutrientContentRecord!
-                                                        .intolerances!
-                                                        .toList()
-                                                        .contains(
-                                                            intolerancesItem),
-                                                onChanged: (newValue) async {
-                                                  setState(() => _model
-                                                              .checkboxValueMap[
-                                                          intolerancesItem] =
-                                                      newValue!);
-                                                  if (newValue!) {
-                                                    final userNutrientContentUpdateData =
-                                                        {
-                                                      'intolerances': FieldValue
-                                                          .arrayUnion([
-                                                        intolerancesItem
-                                                      ]),
-                                                    };
-                                                    await containerUserNutrientContentRecord!
-                                                        .reference
-                                                        .update(
-                                                            userNutrientContentUpdateData);
-                                                  } else {
-                                                    final userNutrientContentUpdateData =
-                                                        {
-                                                      'intolerances': FieldValue
-                                                          .arrayRemove([
-                                                        intolerancesItem
-                                                      ]),
-                                                    };
-                                                    await containerUserNutrientContentRecord!
-                                                        .reference
-                                                        .update(
-                                                            userNutrientContentUpdateData);
-                                                  }
-                                                },
-                                                activeColor: Colors.black,
-                                                checkColor: Colors.white,
-                                              ),
-                                            ),
-                                          ],
+                                              ],
+                                            );
+                                          },
                                         ),
                                       ),
                                     );

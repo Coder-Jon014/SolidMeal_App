@@ -14,7 +14,8 @@ import 'schema/user_nutrient_content_record.dart';
 import 'schema/diets_record.dart';
 import 'schema/intolerances_record.dart';
 import 'schema/recipe_notes_record.dart';
-import 'schema/notes_for_recipes_record.dart';
+import 'schema/intolerance_list_record.dart';
+import 'schema/recipe_user_notes_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -31,7 +32,8 @@ export 'schema/user_nutrient_content_record.dart';
 export 'schema/diets_record.dart';
 export 'schema/intolerances_record.dart';
 export 'schema/recipe_notes_record.dart';
-export 'schema/notes_for_recipes_record.dart';
+export 'schema/intolerance_list_record.dart';
+export 'schema/recipe_user_notes_record.dart';
 
 /// Functions to query RecipesRecords (as a Stream and as a Future).
 Future<int> queryRecipesRecordCount({
@@ -510,52 +512,108 @@ Future<FFFirestorePage<RecipeNotesRecord>> queryRecipeNotesRecordPage({
       isStream: isStream,
     );
 
-/// Functions to query NotesForRecipesRecords (as a Stream and as a Future).
-Future<int> queryNotesForRecipesRecordCount({
+/// Functions to query IntoleranceListRecords (as a Stream and as a Future).
+Future<int> queryIntoleranceListRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      NotesForRecipesRecord.collection,
+      IntoleranceListRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<NotesForRecipesRecord>> queryNotesForRecipesRecord({
+Stream<List<IntoleranceListRecord>> queryIntoleranceListRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      NotesForRecipesRecord.collection,
-      NotesForRecipesRecord.serializer,
+      IntoleranceListRecord.collection,
+      IntoleranceListRecord.serializer,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<NotesForRecipesRecord>> queryNotesForRecipesRecordOnce({
+Future<List<IntoleranceListRecord>> queryIntoleranceListRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      NotesForRecipesRecord.collection,
-      NotesForRecipesRecord.serializer,
+      IntoleranceListRecord.collection,
+      IntoleranceListRecord.serializer,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<FFFirestorePage<NotesForRecipesRecord>> queryNotesForRecipesRecordPage({
+Future<FFFirestorePage<IntoleranceListRecord>> queryIntoleranceListRecordPage({
   Query Function(Query)? queryBuilder,
   DocumentSnapshot? nextPageMarker,
   required int pageSize,
   required bool isStream,
 }) =>
     queryCollectionPage(
-      NotesForRecipesRecord.collection,
-      NotesForRecipesRecord.serializer,
+      IntoleranceListRecord.collection,
+      IntoleranceListRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query RecipeUserNotesRecords (as a Stream and as a Future).
+Future<int> queryRecipeUserNotesRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      RecipeUserNotesRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<RecipeUserNotesRecord>> queryRecipeUserNotesRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      RecipeUserNotesRecord.collection(parent),
+      RecipeUserNotesRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<RecipeUserNotesRecord>> queryRecipeUserNotesRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      RecipeUserNotesRecord.collection(parent),
+      RecipeUserNotesRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<RecipeUserNotesRecord>> queryRecipeUserNotesRecordPage({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      RecipeUserNotesRecord.collection(parent),
+      RecipeUserNotesRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

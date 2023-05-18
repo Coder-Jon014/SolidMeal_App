@@ -17,8 +17,8 @@ class GetToKnow3Model extends FlutterFlowModel {
 
   // State field(s) for Checkbox widget.
 
-  Map<String, bool> checkboxValueMap = {};
-  List<String> get checkboxCheckedItems =>
+  Map<IntoleranceListRecord, bool> checkboxValueMap = {};
+  List<IntoleranceListRecord> get checkboxCheckedItems =>
       checkboxValueMap.entries.where((e) => e.value).map((e) => e.key).toList();
 
   /// Initialization and disposal methods.

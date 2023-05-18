@@ -22,15 +22,19 @@ class DetailsScreenDatabaseModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for shortBio widget.
-  TextEditingController? shortBioController;
-  String? Function(BuildContext, String?)? shortBioControllerValidator;
+  TextEditingController? shortBioController1;
+  String? Function(BuildContext, String?)? shortBioController1Validator;
+  // State field(s) for shortBio widget.
+  TextEditingController? shortBioController2;
+  String? Function(BuildContext, String?)? shortBioController2Validator;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
   void dispose() {
-    shortBioController?.dispose();
+    shortBioController1?.dispose();
+    shortBioController2?.dispose();
   }
 
   /// Additional helper methods are added here.

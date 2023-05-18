@@ -9,14 +9,21 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(DietsRecord.serializer)
       ..add(IllnessesRecord.serializer)
+      ..add(IntoleranceListRecord.serializer)
       ..add(IntolerancesRecord.serializer)
-      ..add(NotesForRecipesRecord.serializer)
       ..add(RecipeListRecord.serializer)
       ..add(RecipeNotesRecord.serializer)
+      ..add(RecipeUserNotesRecord.serializer)
       ..add(RecipesRecord.serializer)
       ..add(UserFavoriteRecord.serializer)
       ..add(UserNutrientContentRecord.serializer)
       ..add(UsersRecord.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

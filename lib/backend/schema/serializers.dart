@@ -10,7 +10,8 @@ import 'user_nutrient_content_record.dart';
 import 'diets_record.dart';
 import 'intolerances_record.dart';
 import 'recipe_notes_record.dart';
-import 'notes_for_recipes_record.dart';
+import 'intolerance_list_record.dart';
+import 'recipe_user_notes_record.dart';
 
 import 'index.dart';
 
@@ -30,7 +31,8 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   DietsRecord,
   IntolerancesRecord,
   RecipeNotesRecord,
-  NotesForRecipesRecord,
+  IntoleranceListRecord,
+  RecipeUserNotesRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

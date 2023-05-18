@@ -45,4 +45,4 @@ export '/recipe_pages/details_screen_database/details_screen_database_widget.dar
     show DetailsScreenDatabaseWidget;
 export '/recipe_pages/recipe_nutrient_content_page_database/recipe_nutrient_content_page_database_widget.dart'
     show RecipeNutrientContentPageDatabaseWidget;
-export '/recipe_pages/note_maker/note_maker_widget.dart' show NoteMakerWidget;
+// export '/recipe_pages/note_maker/note_maker_widget.dart' show NoteMakerWidget;

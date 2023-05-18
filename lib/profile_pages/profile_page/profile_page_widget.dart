@@ -281,6 +281,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           children: [
                             Container(
                               width: 100.0,
+                              
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,

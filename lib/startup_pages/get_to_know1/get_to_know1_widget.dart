@@ -489,10 +489,10 @@ class _GetToKnow1WidgetState extends State<GetToKnow1Widget>
                                                                 usersUpdateData4);
 
                                                         context.pushNamed(
-                                                            'GetToKnow2');
+                                                            'GetToKnow3');
                                                       } else {
                                                         context.pushNamed(
-                                                            'GetToKnow2');
+                                                            'GetToKnow3');
                                                       }
 
                                                       return;
@@ -579,7 +579,7 @@ class _GetToKnow1WidgetState extends State<GetToKnow1Widget>
                                                                 userNutrientContentUpdateData2);
 
                                                         context.pushNamed(
-                                                            'GetToKnow2');
+                                                            'GetToKnow3');
                                                       } else {
                                                         final userNutrientContentUpdateData3 =
                                                             createUserNutrientContentRecordData(
@@ -628,7 +628,7 @@ class _GetToKnow1WidgetState extends State<GetToKnow1Widget>
                                                                 usersUpdateData8);
 
                                                         context.pushNamed(
-                                                            'GetToKnow2');
+                                                            'GetToKnow3');
                                                       }
 
                                                       return;

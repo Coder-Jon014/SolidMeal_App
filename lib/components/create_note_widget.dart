@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'create_note_model.dart';
 export 'create_note_model.dart';
 
@@ -64,25 +65,25 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
 
     return Material(
       color: Colors.transparent,
-      elevation: 5.0,
+      elevation: 5,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(0.0),
-          bottomRight: Radius.circular(0.0),
-          topLeft: Radius.circular(16.0),
-          topRight: Radius.circular(16.0),
+          bottomLeft: Radius.circular(0),
+          bottomRight: Radius.circular(0),
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
         ),
       ),
       child: Container(
         width: double.infinity,
-        height: 781.0,
+        height: 781,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(0.0),
-            bottomRight: Radius.circular(0.0),
-            topLeft: Radius.circular(16.0),
-            topRight: Radius.circular(16.0),
+            bottomLeft: Radius.circular(0),
+            bottomRight: Radius.circular(0),
+            topLeft: Radius.circular(16),
+            topRight: Radius.circular(16),
           ),
         ),
         child: SingleChildScrollView(
@@ -95,27 +96,26 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                     child: Container(
-                      width: 50.0,
-                      height: 4.0,
+                      width: 50,
+                      height: 4,
                       decoration: BoxDecoration(
                         color: Color(0xFFE0E3E7),
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(8),
                       ),
                     ),
                   ),
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 0),
                 child: Text(
-                  'Create Note',
+                  'Create Note/Review',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily: 'Outfit',
                         color: Color(0xFF14181B),
-                        fontSize: 24.0,
+                        fontSize: 24,
                         fontWeight: FontWeight.normal,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
                             FlutterFlowTheme.of(context).headlineMediumFamily),
@@ -123,13 +123,13 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16, 4, 0, 0),
                 child: Text(
                   '',
                   style: FlutterFlowTheme.of(context).labelMedium.override(
                         fontFamily: 'Plus Jakarta Sans',
                         color: Color(0xFF57636C),
-                        fontSize: 14.0,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
                             FlutterFlowTheme.of(context).labelMediumFamily),
@@ -137,25 +137,24 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(40.0),
+                      borderRadius: BorderRadius.circular(40),
                       child: Image.network(
                         valueOrDefault<String>(
                           widget.userImage,
                           'https://images.unsplash.com/photo-1610737241336-371badac3b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
                         ),
-                        width: 40.0,
-                        height: 40.0,
+                        width: 40,
+                        height: 40,
                         fit: BoxFit.cover,
                       ),
                     ),
                     Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                      padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                       child: Text(
                         valueOrDefault<String>(
                           widget.userName,
@@ -164,7 +163,7 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                         style: FlutterFlowTheme.of(context).titleLarge.override(
                               fontFamily: 'Outfit',
                               color: Color(0xFF14181B),
-                              fontSize: 22.0,
+                              fontSize: 22,
                               fontWeight: FontWeight.w500,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
@@ -176,7 +175,7 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
                 child: TextFormField(
                   controller: _model.shortBioController,
                   obscureText: false,
@@ -187,7 +186,7 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                         .override(
                           fontFamily: 'Plus Jakarta Sans',
                           color: Color(0xFF57636C),
-                          fontSize: 14.0,
+                          fontSize: 14,
                           fontWeight: FontWeight.w500,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).labelMediumFamily),
@@ -195,38 +194,38 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFFE0E3E7),
-                        width: 2.0,
+                        width: 2,
                       ),
-                      borderRadius: BorderRadius.circular(8.0),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF4B39EF),
-                        width: 2.0,
+                        width: 2,
                       ),
-                      borderRadius: BorderRadius.circular(8.0),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                     errorBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFFFF5963),
-                        width: 2.0,
+                        width: 2,
                       ),
-                      borderRadius: BorderRadius.circular(8.0),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                     focusedErrorBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFFFF5963),
-                        width: 2.0,
+                        width: 2,
                       ),
-                      borderRadius: BorderRadius.circular(8.0),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                     contentPadding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 32.0, 20.0, 12.0),
+                        EdgeInsetsDirectional.fromSTEB(20, 32, 20, 12),
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Plus Jakarta Sans',
                         color: Color(0xFF14181B),
-                        fontSize: 14.0,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
                             FlutterFlowTheme.of(context).bodyMediumFamily),
@@ -240,27 +239,25 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
               ),
               Container(
                 width: double.infinity,
-                height: 116.0,
+                height: 116,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            12.0, 0.0, 0.0, 12.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 12),
                         child: Text(
                           'Would you cook it again?',
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
                                 fontFamily: 'Plus Jakarta Sans',
-                                fontSize: 16.0,
+                                fontSize: 16,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
@@ -290,17 +287,17 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .labelMediumFamily,
                                         color: Colors.white,
-                                        fontSize: 16.0,
+                                        fontSize: 16,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
                                                     .labelMediumFamily),
                                       ),
                                   iconColor: Colors.white,
-                                  iconSize: 18.0,
+                                  iconSize: 18,
                                   labelPadding: EdgeInsetsDirectional.fromSTEB(
-                                      8.0, 8.0, 8.0, 8.0),
-                                  elevation: 1.0,
+                                      8, 8, 8, 8),
+                                  elevation: 1,
                                 ),
                                 unselectedChipStyle: ChipStyle(
                                   backgroundColor:
@@ -310,7 +307,7 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                                       .override(
                                         fontFamily: 'Plus Jakarta Sans',
                                         color: Colors.black,
-                                        fontSize: 18.0,
+                                        fontSize: 18,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
@@ -318,10 +315,10 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                                       ),
                                   iconColor:
                                       FlutterFlowTheme.of(context).primaryText,
-                                  iconSize: 18.0,
-                                  elevation: 1.0,
+                                  iconSize: 18,
+                                  elevation: 1,
                                 ),
-                                chipSpacing: 20.0,
+                                chipSpacing: 20,
                                 multiselect: false,
                                 alignment: WrapAlignment.start,
                                 controller:
@@ -340,27 +337,25 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
               ),
               Container(
                 width: double.infinity,
-                height: 116.0,
+                height: 116,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            12.0, 0.0, 0.0, 12.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 12),
                         child: Text(
                           'What were your thoughts on the taste?',
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
                                 fontFamily: 'Plus Jakarta Sans',
-                                fontSize: 16.0,
+                                fontSize: 16,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
@@ -391,17 +386,17 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .labelMediumFamily,
                                         color: Colors.white,
-                                        fontSize: 16.0,
+                                        fontSize: 16,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
                                                     .labelMediumFamily),
                                       ),
                                   iconColor: Colors.white,
-                                  iconSize: 18.0,
+                                  iconSize: 18,
                                   labelPadding: EdgeInsetsDirectional.fromSTEB(
-                                      8.0, 8.0, 8.0, 8.0),
-                                  elevation: 1.0,
+                                      8, 8, 8, 8),
+                                  elevation: 1,
                                 ),
                                 unselectedChipStyle: ChipStyle(
                                   backgroundColor:
@@ -411,7 +406,7 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                                       .override(
                                         fontFamily: 'Plus Jakarta Sans',
                                         color: Colors.black,
-                                        fontSize: 18.0,
+                                        fontSize: 18,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
@@ -419,10 +414,10 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                                       ),
                                   iconColor:
                                       FlutterFlowTheme.of(context).primaryText,
-                                  iconSize: 18.0,
-                                  elevation: 1.0,
+                                  iconSize: 18,
+                                  elevation: 1,
                                 ),
-                                chipSpacing: 20.0,
+                                chipSpacing: 20,
                                 multiselect: false,
                                 alignment: WrapAlignment.start,
                                 controller:
@@ -441,27 +436,25 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
               ),
               Container(
                 width: double.infinity,
-                height: 149.0,
+                height: 149,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            12.0, 0.0, 0.0, 12.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 12),
                         child: Text(
                           'Loved or Dislike? Tap the thumb to tell us',
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
                                 fontFamily: 'Plus Jakarta Sans',
-                                fontSize: 16.0,
+                                fontSize: 16,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
@@ -482,12 +475,12 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                               onIcon: Icon(
                                 Icons.thumb_up,
                                 color: FlutterFlowTheme.of(context).primary,
-                                size: 80.0,
+                                size: 80,
                               ),
                               offIcon: Icon(
                                 Icons.thumb_down_rounded,
                                 color: FlutterFlowTheme.of(context).accent2,
-                                size: 80.0,
+                                size: 80,
                               ),
                             ),
                           ],
@@ -497,86 +490,150 @@ class _CreateNoteWidgetState extends State<CreateNoteWidget> {
                   ),
                 ),
               ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 34.0, 0.0, 24.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        final recipeNotesCreateData =
-                            createRecipeNotesRecordData(
-                          recipeNotes: valueOrDefault<String>(
-                            _model.shortBioController.text,
-                            'Awesome Recipe',
-                          ),
-                          recipeNoteGiver: widget.userName,
-                          recipeNoteGiverImage: widget.userImage,
-                          dateCreated: getCurrentTimestamp,
-                          willTry: valueOrDefault<String>(
-                            _model.choiceChipsValue1,
-                            'Definitely',
-                          ),
-                          loved: _model.likeStatus,
-                          noteTag: valueOrDefault<String>(
-                            _model.choiceChipsValue2,
-                            'Tasty',
-                          ),
-                        );
-                        await RecipeNotesRecord.createDoc(widget.recipeRef!)
-                            .set(recipeNotesCreateData);
-                        if (!widget.userFavRef!.recipeId!
-                            .toList()
-                            .contains(widget.recipeId)) {
-                          final userFavoriteUpdateData = {
-                            'recipeId':
-                                FieldValue.arrayUnion([widget.recipeId]),
-                          };
-                          await widget.userFavRef!.reference
-                              .update(userFavoriteUpdateData);
-                        }
+              Container(
+                width: double.infinity,
+                height: 100,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(22, 34, 22, 24),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            final recipeUserNotesCreateData =
+                                createRecipeUserNotesRecordData(
+                              recipeNotes: valueOrDefault<String>(
+                                _model.shortBioController.text,
+                                'Awesome Recipe',
+                              ),
+                              recipeNoteGiver: widget.userName,
+                              recipeNoteGiverImage: widget.userImage,
+                              dateCreated: getCurrentTimestamp,
+                              willTry: valueOrDefault<String>(
+                                _model.choiceChipsValue1,
+                                'Definitely',
+                              ),
+                              loved: _model.likeStatus,
+                              noteTag: valueOrDefault<String>(
+                                _model.choiceChipsValue2,
+                                'Tasty',
+                              ),
+                            );
+                            await RecipeUserNotesRecord.createDoc(
+                                    currentUserReference!)
+                                .set(recipeUserNotesCreateData);
 
-                        context.pushNamed(
-                          'DetailsScreenDatabase',
-                          queryParams: {
-                            'recipeId': serializeParam(
-                              widget.recipeId,
-                              ParamType.int,
-                            ),
-                          }.withoutNulls,
-                        );
-                      },
-                      text: 'Create Note',
-                      options: FFButtonOptions(
-                        width: 270.0,
-                        height: 50.0,
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleMedium.override(
+                            context.pushNamed(
+                              'DetailsScreenDatabase',
+                              queryParams: {
+                                'recipeId': serializeParam(
+                                  widget.recipeId,
+                                  ParamType.int,
+                                ),
+                              }.withoutNulls,
+                            );
+                          },
+                          text: 'Create Note',
+                          options: FFButtonOptions(
+                            width: 270,
+                            height: 50,
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            iconPadding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleMedium
+                                .override(
                                   fontFamily: 'Plus Jakarta Sans',
                                   color: Colors.white,
-                                  fontSize: 18.0,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.normal,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .titleMediumFamily),
                                 ),
-                        elevation: 3.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
+                            elevation: 3,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(22, 34, 22, 24),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            final recipeNotesCreateData =
+                                createRecipeNotesRecordData(
+                              recipeNotes: valueOrDefault<String>(
+                                _model.shortBioController.text,
+                                'Awesome Recipe',
+                              ),
+                              recipeNoteGiver: widget.userName,
+                              recipeNoteGiverImage: widget.userImage,
+                              dateCreated: getCurrentTimestamp,
+                              willTry: valueOrDefault<String>(
+                                _model.choiceChipsValue1,
+                                'Definitely',
+                              ),
+                              loved: _model.likeStatus,
+                              noteTag: valueOrDefault<String>(
+                                _model.choiceChipsValue2,
+                                'Tasty',
+                              ),
+                            );
+                            await RecipeNotesRecord.createDoc(widget.recipeRef!)
+                                .set(recipeNotesCreateData);
+
+                            context.pushNamed(
+                              'DetailsScreenDatabase',
+                              queryParams: {
+                                'recipeId': serializeParam(
+                                  widget.recipeId,
+                                  ParamType.int,
+                                ),
+                              }.withoutNulls,
+                            );
+                          },
+                          text: 'Create Review',
+                          options: FFButtonOptions(
+                            width: 270,
+                            height: 50,
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            iconPadding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleMedium
+                                .override(
+                                  fontFamily: 'Plus Jakarta Sans',
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.normal,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .titleMediumFamily),
+                                ),
+                            elevation: 3,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

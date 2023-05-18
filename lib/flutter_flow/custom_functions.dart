@@ -71,6 +71,7 @@ List<String>? nutrientUnitAdder() {
 
   return nutrientUnits;
 }
+
 List<Map<String, dynamic>> knnAlgorithmIntegrator(
   double carbohydrates,
   double protein,
@@ -85,20 +86,23 @@ List<Map<String, dynamic>> knnAlgorithmIntegrator(
   double fiber,
   double magnesium,
   List<Map<String, dynamic>> recipes,
+  List<String> intolerances,
 ) {
   // Create a list of the recipes
   final List<Map<String, dynamic>> recipesList = [];
-  
+
   // Loop through the recipes
   for (final recipe in recipes) {
     // Get the nutrients of the recipe
-    final nutrients = recipe['nutrition']['nutrients'].cast<Map<String, dynamic>>();
-    
+    final nutrients =
+        recipe['nutrition']['nutrients'].cast<Map<String, dynamic>>();
+
     // Create a map of the recipe
     final Map<String, dynamic> recipeMap = {
       'id': recipe['id'],
       'title': recipe['title'],
       'image': recipe['image'],
+      'extendedIngredients': recipe['extendedIngredients'], // Add extendedIngredients to the map
     };
 
     // Loop through the nutrients and assign them based on their name
@@ -106,7 +110,7 @@ List<Map<String, dynamic>> knnAlgorithmIntegrator(
       final nutrientName = nutrient['name'].toLowerCase();
       recipeMap[nutrientName] = nutrient['amount'];
     }
-    
+
     // Add the recipe to the list
     recipesList.add(recipeMap);
   }
@@ -127,8 +131,11 @@ List<Map<String, dynamic>> knnAlgorithmIntegrator(
     'magnesium': magnesium,
   };
 
-  // Filter the recipes based on the target nutrition
-  List<Map<String, dynamic>> filteredRecipes = recipesList.where((recipe) => _isRecipeValid(recipe, targetNutrition)).toList();
+  // Filter the recipes based on the intolerances and target nutrition
+  List<Map<String, dynamic>> filteredRecipes = recipesList.where((recipe) {
+    return !_containsIntolerances(recipe, intolerances) &&
+     _isRecipeValid(recipe, targetNutrition);
+  }).toList().cast<Map<String, dynamic>>();  // Add the cast here
 
   // Sort the recipes based on their distance to the target nutrition
   filteredRecipes.sort((a, b) => _compareRecipes(a, b, targetNutrition));
@@ -136,11 +143,12 @@ List<Map<String, dynamic>> knnAlgorithmIntegrator(
   return filteredRecipes;
 }
 
+
 bool _isRecipeValid(Map<String, dynamic> recipe, Map<String, double> target) {
   for (String nutrient in target.keys) {
     double recipeValue = recipe[nutrient] ?? 0.0;
     double targetValue = target[nutrient] ?? 0.0;
-    
+
     if (recipeValue > targetValue) {
       return false;
     }
@@ -149,26 +157,46 @@ bool _isRecipeValid(Map<String, dynamic> recipe, Map<String, double> target) {
   return true;
 }
 
-int _compareRecipes(Map<String, dynamic> a, Map<String, dynamic> b, Map<String, double> target) {
+bool _containsIntolerances(
+    Map<String, dynamic> recipe, List<String> intolerances) {
+  List<dynamic> ingredients = recipe['extendedIngredients'];
+
+  for (var ingredient in ingredients) {
+    Map<String, dynamic> ingredientMap = ingredient as Map<String, dynamic>; // Cast to Map<String, dynamic>
+    String ingredientName = ingredientMap['name'].toLowerCase();
+
+    for (String intolerance in intolerances) {
+      if (ingredientName.contains(intolerance)) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+
+int _compareRecipes(Map<String, dynamic> a, Map<String, dynamic> b,
+    Map<String, double> target) {
   double distanceA = _calculateDistance(a, target);
   double distanceB = _calculateDistance(b, target);
-  
+
   return distanceA.compareTo(distanceB);
 }
 
-double _calculateDistance(Map<String, dynamic> recipe, Map<String, double> target) {
+double _calculateDistance(
+    Map<String, dynamic> recipe, Map<String, double> target) {
   double distance = 0.0;
 
   for (String nutrient in target.keys) {
     double recipeValue = recipe[nutrient] ?? 0.0;
     double targetValue = target[nutrient] ?? 0.0;
-    
+
     distance += math.pow(recipeValue - targetValue, 2);
   }
-  
+
   return math.sqrt(distance);
 }
-
 
 
 String? integerListJoiner(List<int>? integerList) {

@@ -29,7 +29,9 @@ Note: The .env file is included in the .gitignore to ensure sensitive data (like
 ![first screen](https://github.com/Coder-Jon014/SolidMeal_App/assets/71227832/aac098ad-db40-4900-abbf-736b8826dea0)
 ![home](https://github.com/Coder-Jon014/SolidMeal_App/assets/71227832/89e3cb4f-f36a-43ae-b21b-edfc9b4ee9ae)
 ![MealType Screen](https://github.com/Coder-Jon014/SolidMeal_App/assets/71227832/35b7fd61-6e08-480f-bad2-55e448cff195)
-![sixth screen](https://github.com/Coder-Jon014/SolidMeal_App/assets/71227832/04ec3f74-c5e1-4397-85b2-d8d39e07360b)
+![RecipeSimilarRecipesPage](https://github.com/Coder-Jon014/SolidMeal_App/assets/71227832/25be0893-1a71-4067-8fff-70d28013a021)
+![RecipeInstructionsPage1](https://github.com/Coder-Jon014/SolidMeal_App/assets/71227832/8b08f584-98e0-40ab-8205-a1277678b9c7)
+![RecipeCreateNote_ReviewPage](https://github.com/Coder-Jon014/SolidMeal_App/assets/71227832/c06ca21c-d1ac-40ca-a267-1d9272f187cf)
 
 
 

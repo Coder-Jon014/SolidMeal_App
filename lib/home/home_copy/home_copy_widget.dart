@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:easy_debounce/easy_debounce.dart';
+import 'dart:developer' as dev;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -78,7 +80,9 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                   size: 30.0,
                 ),
                 onPressed: () {
-                  print('IconButton pressed ...');
+                  if (kDebugMode) {
+                    dev.log('IconButton pressed ...');
+                  }
                 },
               ),
             ),

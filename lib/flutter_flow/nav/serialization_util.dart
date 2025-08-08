@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:from_css_color/from_css_color.dart';
+import 'dart:developer' as dev;
+import 'package:flutter/foundation.dart';
 
 import '/backend/backend.dart';
 
@@ -93,7 +95,9 @@ String? serializeParam(
         return null;
     }
   } catch (e) {
-    print('Error serializing parameter: $e');
+    if (kDebugMode) {
+      dev.log('Error serializing parameter: $e');
+    }
     return null;
   }
 }
@@ -236,7 +240,9 @@ dynamic deserializeParam<T>(
         return null;
     }
   } catch (e) {
-    print('Error deserializing parameter: $e');
+    if (kDebugMode) {
+      dev.log('Error deserializing parameter: $e');
+    }
     return null;
   }
 }

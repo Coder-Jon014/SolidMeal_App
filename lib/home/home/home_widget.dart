@@ -8,6 +8,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -329,11 +330,19 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  child: Image.network(
-                                                    'https://images.unsplash.com/photo-1600335895229-6e75511892c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+                                                  child: CachedNetworkImage(
+                                                    imageUrl:
+                                                        'https://images.unsplash.com/photo-1600335895229-6e75511892c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
                                                     width: double.infinity,
                                                     height: 105,
                                                     fit: BoxFit.fitWidth,
+                                                    placeholder: (context, url) =>
+                                                        const Center(
+                                                      child:
+                                                          CircularProgressIndicator(),
+                                                    ),
+                                                    errorWidget: (context, url, error) =>
+                                                        const Icon(Icons.error),
                                                   ),
                                                 ),
                                                 Padding(
@@ -445,11 +454,19 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  child: Image.network(
-                                                    'https://images.unsplash.com/photo-1497534446932-c925b458314e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1372&q=80',
+                                                  child: CachedNetworkImage(
+                                                    imageUrl:
+                                                        'https://images.unsplash.com/photo-1497534446932-c925b458314e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1372&q=80',
                                                     width: double.infinity,
                                                     height: 105,
                                                     fit: BoxFit.fitWidth,
+                                                    placeholder: (context, url) =>
+                                                        const Center(
+                                                      child:
+                                                          CircularProgressIndicator(),
+                                                    ),
+                                                    errorWidget: (context, url, error) =>
+                                                        const Icon(Icons.error),
                                                   ),
                                                 ),
                                                 Padding(
@@ -561,11 +578,19 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  child: Image.network(
-                                                    'https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+                                                  child: CachedNetworkImage(
+                                                    imageUrl:
+                                                        'https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
                                                     width: double.infinity,
                                                     height: 105,
                                                     fit: BoxFit.fitWidth,
+                                                    placeholder: (context, url) =>
+                                                        const Center(
+                                                      child:
+                                                          CircularProgressIndicator(),
+                                                    ),
+                                                    errorWidget: (context, url, error) =>
+                                                        const Icon(Icons.error),
                                                   ),
                                                 ),
                                                 Padding(
@@ -677,11 +702,19 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  child: Image.network(
-                                                    'https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+                                                  child: CachedNetworkImage(
+                                                    imageUrl:
+                                                        'https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
                                                     width: double.infinity,
                                                     height: 105,
                                                     fit: BoxFit.fitWidth,
+                                                    placeholder: (context, url) =>
+                                                        const Center(
+                                                      child:
+                                                          CircularProgressIndicator(),
+                                                    ),
+                                                    errorWidget: (context, url, error) =>
+                                                        const Icon(Icons.error),
                                                   ),
                                                 ),
                                                 Padding(
@@ -793,11 +826,19 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  child: Image.network(
-                                                    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+                                                  child: CachedNetworkImage(
+                                                    imageUrl:
+                                                        'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
                                                     width: double.infinity,
                                                     height: 105,
                                                     fit: BoxFit.fitWidth,
+                                                    placeholder: (context, url) =>
+                                                        const Center(
+                                                      child:
+                                                          CircularProgressIndicator(),
+                                                    ),
+                                                    errorWidget: (context, url, error) =>
+                                                        const Icon(Icons.error),
                                                   ),
                                                 ),
                                                 Padding(
@@ -1085,16 +1126,25 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                     .circular(
                                                                         10),
                                                             child:
-                                                                Image.network(
-                                                              getJsonField(
+                                                                CachedNetworkImage(
+                                                              imageUrl:
+                                                                  getJsonField(
                                                                 recipeItem,
                                                                 r'''$.image''',
-                                                              ),
+                                                              ).toString(),
                                                               width: double
                                                                   .infinity,
                                                               height: 155,
                                                               fit: BoxFit
                                                                   .fitWidth,
+                                                              placeholder: (context, url) =>
+                                                                  const Center(
+                                                                child:
+                                                                    CircularProgressIndicator(),
+                                                              ),
+                                                              errorWidget:
+                                                                  (context, url, error) =>
+                                                                      const Icon(Icons.error),
                                                             ),
                                                           ),
                                                           Row(

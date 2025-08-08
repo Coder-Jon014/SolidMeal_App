@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -97,15 +98,21 @@ class _DetailsScreenWidgetState extends State<DetailsScreenWidget> {
                                 children: [
                                   Align(
                                     alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Image.network(
-                                      RecipeInfoCall.image(
+                                    child: CachedNetworkImage(
+                                      imageUrl: RecipeInfoCall.image(
                                         detailsScreenRecipeInfoResponse
                                             .jsonBody,
-                                      ),
+                                      ).toString(),
                                       width: MediaQuery.of(context).size.width *
                                           1.0,
                                       height: 240.0,
                                       fit: BoxFit.cover,
+                                      placeholder: (context, url) => const Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                      errorWidget:
+                                          (context, url, error) =>
+                                              const Icon(Icons.error),
                                     ),
                                   ),
                                   Builder(

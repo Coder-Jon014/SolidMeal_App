@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../auth/firebase_auth/auth_util.dart';
 
 import '../flutter_flow/flutter_flow_util.dart';
+import 'dart:developer' as dev;
+import 'package:flutter/foundation.dart';
 
 import 'schema/recipes_record.dart';
 import 'schema/illnesses_record.dart';
@@ -632,7 +634,9 @@ Future<int> queryCollectionCount(
   }
 
   return query.count().get().catchError((err) {
-    print('Error querying $collection: $err');
+    if (kDebugMode) {
+      dev.log('Error querying $collection: $err');
+    }
   }).then((value) => value.count);
 }
 
@@ -646,12 +650,18 @@ Stream<List<T>> queryCollection<T>(Query collection, Serializer<T> serializer,
     query = query.limit(singleRecord ? 1 : limit);
   }
   return query.snapshots().handleError((err) {
-    print('Error querying $collection: $err');
+    if (kDebugMode) {
+      dev.log('Error querying $collection: $err');
+    }
   }).map((s) => s.docs
       .map(
         (d) => safeGet(
           () => serializers.deserializeWith(serializer, serializedData(d)),
-          (e) => print('Error serializing doc ${d.reference.path}:\n$e'),
+          (e) {
+            if (kDebugMode) {
+              dev.log('Error serializing doc ${d.reference.path}:\n$e');
+            }
+          },
         ),
       )
       .where((d) => d != null)
@@ -673,7 +683,11 @@ Future<List<T>> queryCollectionOnce<T>(
       .map(
         (d) => safeGet(
           () => serializers.deserializeWith(serializer, serializedData(d)),
-          (e) => print('Error serializing doc ${d.reference.path}:\n$e'),
+          (e) {
+            if (kDebugMode) {
+              dev.log('Error serializing doc ${d.reference.path}:\n$e');
+            }
+          },
         ),
       )
       .where((d) => d != null)
@@ -729,7 +743,11 @@ Future<FFFirestorePage<T>> queryCollectionPage<T>(
       .map(
         (d) => safeGet(
           () => serializers.deserializeWith(serializer, serializedData(d)),
-          (e) => print('Error serializing doc ${d.reference.path}:\n$e'),
+          (e) {
+            if (kDebugMode) {
+              dev.log('Error serializing doc ${d.reference.path}:\n$e');
+            }
+          },
         ),
       )
       .where((d) => d != null)

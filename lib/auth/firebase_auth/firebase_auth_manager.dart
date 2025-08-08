@@ -1,11 +1,12 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show kIsWeb, kDebugMode;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../auth_manager.dart';
 import '../base_auth_user_provider.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
+import 'dart:developer' as dev;
 
 import '../../backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -41,7 +42,9 @@ class FirebaseAuthManager extends AuthManager
   Future deleteUser(BuildContext context) async {
     try {
       if (!loggedIn) {
-        print('Error: delete user attempted with no logged in user!');
+        if (kDebugMode) {
+          dev.log('Error: delete user attempted with no logged in user!');
+        }
         return;
       }
       await currentUser?.delete();

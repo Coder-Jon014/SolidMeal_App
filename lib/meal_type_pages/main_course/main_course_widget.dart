@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -479,15 +480,23 @@ class _MainCourseWidgetState extends State<MainCourseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(10),
-                                                          child: Image.network(
-                                                            getJsonField(
+                                                          child: CachedNetworkImage(
+                                                            imageUrl: getJsonField(
                                                               recipesItem,
                                                               r'''$.image''',
-                                                            ),
+                                                            ).toString(),
                                                             width:
                                                                 double.infinity,
                                                             height: 115,
                                                             fit: BoxFit.cover,
+                                                            placeholder: (context, url) =>
+                                                                const Center(
+                                                              child:
+                                                                  CircularProgressIndicator(),
+                                                            ),
+                                                            errorWidget:
+                                                                (context, url, error) =>
+                                                                    const Icon(Icons.error),
                                                           ),
                                                         ),
                                                         Expanded(

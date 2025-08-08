@@ -10,6 +10,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -116,12 +117,18 @@ class _DetailsScreenDatabaseWidgetState
                                 children: [
                                   Align(
                                     alignment: AlignmentDirectional(0, -1.13),
-                                    child: Image.network(
-                                      detailsScreenDatabaseRecipesRecord!
-                                          .recipeImage!,
+                                    child: CachedNetworkImage(
+                                      imageUrl:
+                                          detailsScreenDatabaseRecipesRecord!
+                                              .recipeImage!,
                                       width: MediaQuery.of(context).size.width,
                                       height: 179,
                                       fit: BoxFit.cover,
+                                      placeholder: (context, url) => const Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                      errorWidget: (context, url, error) =>
+                                          const Icon(Icons.error),
                                     ),
                                   ),
                                   Builder(
@@ -1388,12 +1395,21 @@ class _DetailsScreenDatabaseWidgetState
                                                                       .circular(
                                                                           40),
                                                               child:
-                                                                  Image.network(
-                                                                'https://images.unsplash.com/photo-1610737241336-371badac3b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+                                                                  CachedNetworkImage(
+                                                                imageUrl:
+                                                                    'https://images.unsplash.com/photo-1610737241336-371badac3b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
                                                                 width: 40,
                                                                 height: 40,
                                                                 fit: BoxFit
                                                                     .cover,
+                                                                placeholder:
+                                                                    (context, url) =>
+                                                                        const Center(
+                                                                  child:
+                                                                      CircularProgressIndicator(),
+                                                                ),
+                                                                errorWidget: (context, url, error) =>
+                                                                    const Icon(Icons.error),
                                                               ),
                                                             ),
                                                             Expanded(
@@ -1861,14 +1877,19 @@ class _DetailsScreenDatabaseWidgetState
                                                                           children: [
                                                                             ClipRRect(
                                                                               borderRadius: BorderRadius.circular(10.0),
-                                                                              child: Image.network(
-                                                                                getJsonField(
+                                                                              child: CachedNetworkImage(
+                                                                                imageUrl: getJsonField(
                                                                                   recipesItem,
                                                                                   r'''$.image''',
-                                                                                ),
+                                                                                ).toString(),
                                                                                 width: double.infinity,
                                                                                 height: 115.0,
                                                                                 fit: BoxFit.cover,
+                                                                                placeholder: (context, url) => const Center(
+                                                                                  child: CircularProgressIndicator(),
+                                                                                ),
+                                                                                errorWidget: (context, url, error) =>
+                                                                                    const Icon(Icons.error),
                                                                               ),
                                                                             ),
                                                                             Expanded(
@@ -2241,12 +2262,21 @@ class _DetailsScreenDatabaseWidgetState
                                                                       .circular(
                                                                           40),
                                                               child:
-                                                                  Image.network(
-                                                                'https://images.unsplash.com/photo-1610737241336-371badac3b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+                                                                  CachedNetworkImage(
+                                                                imageUrl:
+                                                                    'https://images.unsplash.com/photo-1610737241336-371badac3b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
                                                                 width: 40,
                                                                 height: 40,
                                                                 fit: BoxFit
                                                                     .cover,
+                                                                placeholder:
+                                                                    (context, url) =>
+                                                                        const Center(
+                                                                  child:
+                                                                      CircularProgressIndicator(),
+                                                                ),
+                                                                errorWidget: (context, url, error) =>
+                                                                    const Icon(Icons.error),
                                                               ),
                                                             ),
                                                             Expanded(
